@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ListItem} from 'react-native-elements';
-import {FlatList, SafeAreaView, ScrollView, Text, View} from 'react-native';
+import {SafeAreaView, SectionList, Text, View} from 'react-native';
 
 export default function MonthOverviewList(props) {
   const [overview, setOverview] = useState([]);
@@ -12,9 +12,9 @@ export default function MonthOverviewList(props) {
     if (!props.component.hasOwnProperty('scanStatus')) {
       return <MaterialCommunityIcons name="cancel" size={26} />;
     } else if (props.component.scanStatus) {
-      return <MaterialCommunityIcons name="check" color={'hsl()'} size={26} />;
+      return <MaterialCommunityIcons name="check" color="#4CAF50" size={26} />;
     } else {
-      return <MaterialCommunityIcons name="alert" size={26} />;
+      return <MaterialCommunityIcons name="alert" color="#f44336" size={26} />;
     }
   };
 
@@ -60,20 +60,28 @@ export default function MonthOverviewList(props) {
 
   console.log(overview);
 
+  function Item({component}) {
+    return (
+      <ListItem
+        title={component.identifier}
+        subtitle={component.equipment.identifier}
+        leftIcon={<ListIcon component={component} />}
+        bottomDivider
+        chevron
+      />
+    );
+  }
+
   return (
-    <ScrollView>
-      {overview.map(overviewDate =>
-        overviewDate.data.map((component, i) => (
-          <ListItem
-            key={`${component.equipment.identifier} - ${component.identifier}`}
-            title={`${component.equipment.identifier} - ${
-              component.identifier
-            }`}
-            leftIcon={<ListIcon component={component} />}
-            bottomDivider
-          />
-        )),
-      )}
-    </ScrollView>
+    <SafeAreaView>
+      <SectionList
+        sections={overview}
+        keyExtractor={(item, index) => item + index}
+        renderItem={({item}) => <Item component={item} />}
+        renderSectionHeader={({section: {date}}) => (
+          <Text>{moment(date).format('DD/MM/YY - dddd')}</Text>
+        )}
+      />
+    </SafeAreaView>
   );
 }
