@@ -1,6 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native';
+import MonthOverviewList from './MonthOverviewList';
+import moment from 'moment';
 
 export default function HomeView({navigation}) {
-  return <Text>Hello Home</Text>;
+  return (
+    <MonthOverviewList
+      startDate={moment().startOf('isoWeek')}
+      endDate={moment().endOf('isoWeek')}
+    />
+  );
 }

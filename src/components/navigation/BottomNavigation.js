@@ -13,6 +13,7 @@ export default function BottomNavigation() {
         name="Home"
         component={HomeView}
         options={{
+          title: 'Home',
           tabBarLabel: 'Home',
           tabBarIcon: ({color}) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
