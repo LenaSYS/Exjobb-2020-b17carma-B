@@ -10,7 +10,7 @@ export default function MonthOverviewList(props) {
 
   const ListIcon = props => {
     if (!props.component.hasOwnProperty('scanStatus')) {
-      return <MaterialCommunityIcons name="cancel" size={26} />;
+      return <MaterialCommunityIcons name="cancel" color="#9E9E9E" size={26} />;
     } else if (props.component.scanStatus) {
       return <MaterialCommunityIcons name="check" color="#4CAF50" size={26} />;
     } else {
