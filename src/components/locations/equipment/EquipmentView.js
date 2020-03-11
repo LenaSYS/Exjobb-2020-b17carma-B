@@ -1,6 +1,11 @@
 import React from 'react';
-import {Text} from 'react-native';
+import EquipmentList from './EquipmentList';
+import {SafeAreaView, ScrollView, View} from 'react-native';
 
 export default function EquipmentView({navigation}) {
-  return <Text>Hello Equipment</Text>;
+  return (
+    <ScrollView>
+      <EquipmentList />
+    </ScrollView>
+  );
 }

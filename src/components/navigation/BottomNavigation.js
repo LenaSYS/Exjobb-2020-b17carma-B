@@ -3,15 +3,34 @@ import HomeView from '../locations/home/HomeView';
 import EquipmentView from '../locations/equipment/EquipmentView';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {createStackNavigator} from '@react-navigation/stack';
 
 const Tab = createMaterialBottomTabNavigator();
 
 export default function BottomNavigation() {
+  const HomeStack = createStackNavigator();
+
+  function HomeStackScreen() {
+    return (
+      <HomeStack.Navigator>
+        <HomeStack.Screen name="Home" component={HomeView} />
+      </HomeStack.Navigator>
+    );
+  }
+
+  function EquipmentStackScreen() {
+    return (
+      <HomeStack.Navigator>
+        <HomeStack.Screen name="Equipment" component={EquipmentView} />
+      </HomeStack.Navigator>
+    );
+  }
+
   return (
     <Tab.Navigator initialRouteName="Home">
       <Tab.Screen
         name="Home"
-        component={HomeView}
+        component={HomeStackScreen}
         options={{
           title: 'Home',
           tabBarLabel: 'Home',
@@ -22,7 +41,7 @@ export default function BottomNavigation() {
       />
       <Tab.Screen
         name="Equipment"
-        component={EquipmentView}
+        component={EquipmentStackScreen}
         options={{
           tabBarLabel: 'Equipment',
           tabBarIcon: ({color}) => (
@@ -32,7 +51,7 @@ export default function BottomNavigation() {
       />
       <Tab.Screen
         name="Scan"
-        component={EquipmentView}
+        component={EquipmentStackScreen}
         options={{
           tabBarLabel: 'Scan',
           tabBarIcon: ({color}) => (
@@ -42,7 +61,7 @@ export default function BottomNavigation() {
       />
       <Tab.Screen
         name="Analytics"
-        component={EquipmentView}
+        component={EquipmentStackScreen}
         options={{
           tabBarLabel: 'Analytics',
           tabBarIcon: ({color}) => (

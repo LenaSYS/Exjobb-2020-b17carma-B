@@ -78,6 +78,7 @@ export default function MonthOverviewList(props) {
         sections={overview}
         keyExtractor={(item, index) => item + index}
         renderItem={({item}) => <Item component={item} />}
+        stickySectionHeadersEnabled
         renderSectionHeader={({section: {date}}) => (
           <Text>{moment(date).format('DD/MM/YY - dddd')}</Text>
         )}
