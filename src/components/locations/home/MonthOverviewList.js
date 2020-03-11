@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ListItem} from 'react-native-elements';
-import {FlatList, SafeAreaView, Text, View} from 'react-native';
+import {FlatList, SafeAreaView, ScrollView, Text, View} from 'react-native';
 
 export default function MonthOverviewList(props) {
   const [overview, setOverview] = useState([]);
@@ -12,7 +12,7 @@ export default function MonthOverviewList(props) {
     if (!props.component.hasOwnProperty('scanStatus')) {
       return <MaterialCommunityIcons name="cancel" size={26} />;
     } else if (props.component.scanStatus) {
-      return <MaterialCommunityIcons name="check" size={26} />;
+      return <MaterialCommunityIcons name="check" color={'hsl()'} size={26} />;
     } else {
       return <MaterialCommunityIcons name="alert" size={26} />;
     }
@@ -61,7 +61,7 @@ export default function MonthOverviewList(props) {
   console.log(overview);
 
   return (
-    <View>
+    <ScrollView>
       {overview.map(overviewDate =>
         overviewDate.data.map((component, i) => (
           <ListItem
@@ -74,6 +74,6 @@ export default function MonthOverviewList(props) {
           />
         )),
       )}
-    </View>
+    </ScrollView>
   );
 }
