@@ -1,6 +1,6 @@
 import React from 'react';
 import EquipmentList from './EquipmentList';
-import {SafeAreaView, ScrollView, View} from 'react-native';
+import {ScrollView} from 'react-native';
 
 export default function EquipmentView({navigation}) {
   return (
