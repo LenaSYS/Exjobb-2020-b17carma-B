@@ -66,7 +66,12 @@ export default function ScanOverviewList(props) {
         title={component.identifier}
         subtitle={component.equipment.identifier}
         leftIcon={<ListIcon component={component} />}
-        onPress={() => props.navigation.navigate('Equipment')}
+        onPress={() =>
+          props.navigation.navigate('Component', {
+            equipmentId: component.equipment._id,
+            componentId: component._id,
+          })
+        }
       />
     );
   }
