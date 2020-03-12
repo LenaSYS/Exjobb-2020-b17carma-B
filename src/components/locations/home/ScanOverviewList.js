@@ -80,7 +80,9 @@ export default function ScanOverviewList(props) {
         renderItem={({item}) => <Item component={item} />}
         stickySectionHeadersEnabled
         renderSectionHeader={({section: {date}}) => (
-          <Text>{moment(date).format('DD/MM/YY - dddd')}</Text>
+          <ListItem
+            title={<Text>{moment(date).format('DD/MM/YY - dddd')}</Text>}
+          />
         )}
       />
     </SafeAreaView>
