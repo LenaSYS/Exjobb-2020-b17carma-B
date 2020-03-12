@@ -39,12 +39,15 @@ export default function OverallPieChart() {
       data={overallData}
       width={screenWidth}
       height={220}
+      backgroundColor='#fff'
       chartConfig={{
         accessor: 'value',
-        color: (opacity = 1) => `rgba(34,139,34, ${opacity})`,
+        color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+      }}
+      style={{
+        background: '#fff',
       }}
       accessor="value"
-      backgroundColor="transparent"
       paddingLeft="15"
       absolute
     />
