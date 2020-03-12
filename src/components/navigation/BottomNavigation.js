@@ -5,6 +5,8 @@ import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createStackNavigator} from '@react-navigation/stack';
 import {StyleSheet} from 'react-native';
+import AnalyticsView from '../locations/analytics/AnalyticsView';
+import QrReaderView from '../locations/scan/QrReaderView';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -49,6 +51,30 @@ export default function BottomNavigation() {
     );
   }
 
+  function ScanStackScreen() {
+    return (
+      <HomeStack.Navigator>
+        <HomeStack.Screen
+          name="Scan"
+          component={QrReaderView}
+          options={headerOptions}
+        />
+      </HomeStack.Navigator>
+    );
+  }
+
+  function AnalyticsStackScreen() {
+    return (
+      <HomeStack.Navigator>
+        <HomeStack.Screen
+          name="Analytics"
+          component={AnalyticsView}
+          options={headerOptions}
+        />
+      </HomeStack.Navigator>
+    );
+  }
+
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -77,7 +103,7 @@ export default function BottomNavigation() {
       />
       <Tab.Screen
         name="Scan"
-        component={EquipmentStackScreen}
+        component={ScanStackScreen}
         options={{
           tabBarLabel: 'Scan',
           tabBarIcon: ({color}) => (
@@ -87,7 +113,7 @@ export default function BottomNavigation() {
       />
       <Tab.Screen
         name="Analytics"
-        component={EquipmentStackScreen}
+        component={AnalyticsStackScreen}
         options={{
           tabBarLabel: 'Analytics',
           tabBarIcon: ({color}) => (

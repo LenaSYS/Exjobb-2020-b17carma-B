@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Button, Card} from 'react-native-elements';
+import TranslatedImage from '../../util/TranslatedImage';
 
 const styles = StyleSheet.create({
   title: {
@@ -16,15 +17,6 @@ const styles = StyleSheet.create({
 export default function EquipmentList(props) {
   const [equipment, setEquipment] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  function getImage(image) {
-    if (image === 'machine.jpg') {
-      return require('../../../img/machine.jpg');
-    } else if (image === 'machine2.jpg') {
-      return require('../../../img/machine2.jpg');
-    }
-    return require('../../../img/machine.jpg');
-  }
 
   useEffect(() => {
     let unmounted = false;
@@ -60,7 +52,7 @@ export default function EquipmentList(props) {
   return equipment.map((equip, i) => (
     <Card
       key={i}
-      image={getImage(equip.image)}
+      image={<TranslatedImage image={equip.image} />}
       onClick={() => console.log('ok')}>
       <Text style={styles.title}>{equip.identifier}</Text>
       <Text style={styles.body}>{equip._id}</Text>
