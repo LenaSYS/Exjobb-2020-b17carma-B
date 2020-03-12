@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {Card} from 'react-native-elements';
 
 const styles = StyleSheet.create({
@@ -59,21 +59,15 @@ export default function ComponentFrequency(props) {
 
   return (
     <View style={styles.root}>
-      <Card
-        style={styles.card}
-        containerStyle={styles.cardContainer}
-        title={props.component.frequency + 'time(s)'}
-      />
-      <Card
-        style={styles.card}
-        containerStyle={styles.cardContainer}
-        title={translate(props.component.frequencyType)}
-      />
-      <Card
-        style={styles.card}
-        containerStyle={styles.cardContainer}
-        title={translateDays(props.component.frequencyDays)}
-      />
+      <Card style={styles.card} containerStyle={styles.cardContainer}>
+        <Text>{props.component.frequency} time(s)</Text>
+      </Card>
+      <Card style={styles.card} containerStyle={styles.cardContainer}>
+        <Text>Each {translate(props.component.frequencyType)}</Text>
+      </Card>
+      <Card style={styles.card} containerStyle={styles.cardContainer}>
+        <Text>{translateDays(props.component.frequencyDays)}</Text>
+      </Card>
     </View>
   );
 }

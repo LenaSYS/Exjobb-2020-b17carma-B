@@ -54,7 +54,6 @@ export default function EquipmentList(props) {
       <Text style={styles.title}>{equip.identifier}</Text>
       <Text style={styles.body}>{equip._id}</Text>
       <Button
-        icon={<Icon name="build" color="#ffffff" />}
         buttonStyle={{
           borderRadius: 0,
           marginLeft: 0,
@@ -66,7 +65,7 @@ export default function EquipmentList(props) {
             equipmentId: equip._id,
           })
         }
-        title="VIEW NOW"
+        title="VIEW"
       />
     </Card>
   ));
