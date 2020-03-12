@@ -1,6 +1,5 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Col, Grid} from 'react-native-easy-grid';
 import {Card} from 'react-native-elements';
 
 const styles = StyleSheet.create({
