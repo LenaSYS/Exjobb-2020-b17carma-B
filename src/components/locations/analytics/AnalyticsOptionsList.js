@@ -3,7 +3,7 @@ import {ScrollView, StyleSheet} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function AnalyticsOptionsList() {
+export default function AnalyticsOptionsList(props) {
   return (
     <ScrollView>
       <ListItem
@@ -11,6 +11,7 @@ export default function AnalyticsOptionsList() {
         leftIcon={
           <MaterialCommunityIcons name="poll-box" color="#9E9E9E" size={26} />
         }
+        onPress={() => props.navigation.navigate('Overall')}
       />
       <ListItem
         title="Equipment"

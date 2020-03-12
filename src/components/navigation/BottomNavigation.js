@@ -7,6 +7,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {StyleSheet} from 'react-native';
 import AnalyticsView from '../locations/analytics/AnalyticsView';
 import QrReaderView from '../locations/scan/QrReaderView';
+import OverallAnalyticsView from '../locations/analytics/overall/OverallAnalyticsView';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -69,6 +70,11 @@ export default function BottomNavigation() {
         <HomeStack.Screen
           name="Analytics"
           component={AnalyticsView}
+          options={headerOptions}
+        />
+        <HomeStack.Screen
+          name="Overall"
+          component={OverallAnalyticsView}
           options={headerOptions}
         />
       </HomeStack.Navigator>
