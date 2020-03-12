@@ -51,8 +51,8 @@ export default function ActionRequiredList(props) {
             <MaterialCommunityIcons name="alarm" color="#9E9E9E" size={26} />
           }
           title={component.identifier}
-          onClick={() =>
-            props.navigation.navigate('Equipment', {
+          onPress={() =>
+            props.navigation.navigate('Component', {
               equipmentId: props.equipmentId,
               componentId: component._id,
             })

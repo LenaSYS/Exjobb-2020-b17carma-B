@@ -44,8 +44,8 @@ export default function ComponentList(props) {
         <ListItem
           key={i}
           leftIcon={<ComponentIcon component={component} />}
-          onClick={() =>
-            props.navigation.navigate('Equipment', {
+          onPress={() =>
+            props.navigation.navigate('Component', {
               equipmentId: props.equipmentId,
               componentId: component._id,
             })

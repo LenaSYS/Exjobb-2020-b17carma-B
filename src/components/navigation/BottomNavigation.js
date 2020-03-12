@@ -9,6 +9,7 @@ import AnalyticsView from '../locations/analytics/AnalyticsView';
 import QrReaderView from '../locations/scan/QrReaderView';
 import OverallAnalyticsView from '../locations/analytics/overall/OverallAnalyticsView';
 import ComponentListView from '../locations/equipment/componentlist/ComponentListView';
+import ComponentInformationView from '../locations/equipment/componentlist/componentinformation/ComponentInformationView';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -52,6 +53,11 @@ export default function BottomNavigation() {
         <HomeStack.Screen
           name="Equipment Item"
           component={ComponentListView}
+          options={headerOptions}
+        />
+        <HomeStack.Screen
+          name="Component"
+          component={ComponentInformationView}
           options={headerOptions}
         />
       </HomeStack.Navigator>
