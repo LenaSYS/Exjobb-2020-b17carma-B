@@ -4,8 +4,23 @@ import EquipmentView from '../locations/equipment/EquipmentView';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createStackNavigator} from '@react-navigation/stack';
+import {StyleSheet} from 'react-native';
 
 const Tab = createMaterialBottomTabNavigator();
+
+const styles = StyleSheet.create({
+  bar: {backgroundColor: 'white'},
+});
+
+const headerOptions = {
+  headerTintColor: '#fff',
+  headerStyle: {
+    backgroundColor: '#3f51b5',
+  },
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },
+};
 
 export default function BottomNavigation() {
   const HomeStack = createStackNavigator();
@@ -13,7 +28,11 @@ export default function BottomNavigation() {
   function HomeStackScreen() {
     return (
       <HomeStack.Navigator>
-        <HomeStack.Screen name="Home" component={HomeView} />
+        <HomeStack.Screen
+          name="Home"
+          component={HomeView}
+          options={headerOptions}
+        />
       </HomeStack.Navigator>
     );
   }
@@ -21,13 +40,20 @@ export default function BottomNavigation() {
   function EquipmentStackScreen() {
     return (
       <HomeStack.Navigator>
-        <HomeStack.Screen name="Equipment" component={EquipmentView} />
+        <HomeStack.Screen
+          name="Equipment"
+          component={EquipmentView}
+          options={headerOptions}
+        />
       </HomeStack.Navigator>
     );
   }
 
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator
+      initialRouteName="Home"
+      barStyle={styles.bar}
+      activeColor="#3f51b5">
       <Tab.Screen
         name="Home"
         component={HomeStackScreen}
