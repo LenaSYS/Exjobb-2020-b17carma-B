@@ -5,7 +5,7 @@ import {ScrollView} from 'react-native';
 export default function EquipmentView({navigation}) {
   return (
     <ScrollView>
-      <EquipmentList />
+      <EquipmentList navigation={navigation}/>
     </ScrollView>
   );
 }

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Button, Card} from 'react-native-elements';
+import {Button, Card, Icon} from 'react-native-elements';
 import TranslatedImage from '../../util/TranslatedImage';
 
 const styles = StyleSheet.create({
@@ -50,12 +50,24 @@ export default function EquipmentList(props) {
   }
 
   return equipment.map((equip, i) => (
-    <Card
-      key={i}
-      image={TranslatedImage(equip.image)}
-      onClick={() => console.log('ok')}>
+    <Card key={i} image={TranslatedImage(equip.image)}>
       <Text style={styles.title}>{equip.identifier}</Text>
       <Text style={styles.body}>{equip._id}</Text>
+      <Button
+        icon={<Icon name="build" color="#ffffff" />}
+        buttonStyle={{
+          borderRadius: 0,
+          marginLeft: 0,
+          marginRight: 0,
+          marginBottom: 0,
+        }}
+        onPress={() =>
+          props.navigation.navigate('Equipment Item', {
+            equipmentId: equip._id,
+          })
+        }
+        title="VIEW NOW"
+      />
     </Card>
   ));
 }

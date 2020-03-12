@@ -8,6 +8,7 @@ import {StyleSheet} from 'react-native';
 import AnalyticsView from '../locations/analytics/AnalyticsView';
 import QrReaderView from '../locations/scan/QrReaderView';
 import OverallAnalyticsView from '../locations/analytics/overall/OverallAnalyticsView';
+import ComponentListView from '../locations/equipment/componentlist/ComponentListView';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -46,6 +47,11 @@ export default function BottomNavigation() {
         <HomeStack.Screen
           name="Equipment"
           component={EquipmentView}
+          options={headerOptions}
+        />
+        <HomeStack.Screen
+          name="Equipment Item"
+          component={ComponentListView}
           options={headerOptions}
         />
       </HomeStack.Navigator>
