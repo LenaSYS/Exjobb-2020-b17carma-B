@@ -1,10 +1,10 @@
 import React from 'react';
-import MonthOverviewList from './MonthOverviewList';
+import ScanOverviewList from './ScanOverviewList';
 import moment from 'moment';
 
 export default function HomeView({navigation}) {
   return (
-    <MonthOverviewList
+    <ScanOverviewList
       startDate={moment().startOf('isoWeek')}
       endDate={moment().endOf('isoWeek')}
     />

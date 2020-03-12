@@ -4,7 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {ListItem} from 'react-native-elements';
 import {SafeAreaView, SectionList, Text, View} from 'react-native';
 
-export default function MonthOverviewList(props) {
+export default function ScanOverviewList(props) {
   const [overview, setOverview] = useState([]);
   const [loading, setLoading] = useState(true);
 
