@@ -39,8 +39,6 @@ export default function OverallCalendarChart() {
     return <View />; //TODO
   }
 
-  const screenWidth = Dimensions.get('window').width;
-
   return (
     <ScrollView horizontal={true}>
       <ContributionGraph
