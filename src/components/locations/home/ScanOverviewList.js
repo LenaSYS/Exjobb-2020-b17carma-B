@@ -67,8 +67,6 @@ export default function ScanOverviewList(props) {
         subtitle={component.equipment.identifier}
         leftIcon={<ListIcon component={component} />}
         onPress={() => props.navigation.navigate('Equipment')}
-        bottomDivider
-        chevron
       />
     );
   }

@@ -6,11 +6,11 @@ import TranslatedImage from '../../util/TranslatedImage';
 const styles = StyleSheet.create({
   title: {
     fontSize: 22,
-    marginBottom: 5,
+    marginBottom: 10,
   },
   body: {
     fontWeight: '400',
-    marginBottom: 5,
+    marginBottom: 8,
   },
 });
 
@@ -52,7 +52,7 @@ export default function EquipmentList(props) {
   return equipment.map((equip, i) => (
     <Card
       key={i}
-      image={<TranslatedImage image={equip.image} />}
+      image={TranslatedImage(equip.image)}
       onClick={() => console.log('ok')}>
       <Text style={styles.title}>{equip.identifier}</Text>
       <Text style={styles.body}>{equip._id}</Text>

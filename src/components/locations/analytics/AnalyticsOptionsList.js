@@ -11,16 +11,12 @@ export default function AnalyticsOptionsList() {
         leftIcon={
           <MaterialCommunityIcons name="poll-box" color="#9E9E9E" size={26} />
         }
-        bottomDivider
-        chevron
       />
       <ListItem
         title="Equipment"
         leftIcon={
           <MaterialCommunityIcons name="wrench" color="#9E9E9E" size={26} />
         }
-        bottomDivider
-        chevron
       />
       <ListItem
         title="Scan History"
@@ -31,8 +27,6 @@ export default function AnalyticsOptionsList() {
             size={26}
           />
         }
-        bottomDivider
-        chevron
       />
     </ScrollView>
   );
