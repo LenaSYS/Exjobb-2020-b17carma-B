@@ -10,6 +10,7 @@ import QrReaderView from '../locations/scan/QrReaderView';
 import OverallAnalyticsView from '../locations/analytics/overall/OverallAnalyticsView';
 import ComponentListView from '../locations/equipment/componentlist/ComponentListView';
 import ComponentInformationView from '../locations/equipment/componentlist/componentinformation/ComponentInformationView';
+import ScanResultView from '../locations/scan/result/ScanResultView';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -28,9 +29,9 @@ const headerOptions = {
 };
 
 export default function BottomNavigation() {
-  const HomeStack = createStackNavigator();
-
   function HomeStackScreen() {
+    const HomeStack = createStackNavigator();
+
     return (
       <HomeStack.Navigator>
         <HomeStack.Screen
@@ -43,53 +44,64 @@ export default function BottomNavigation() {
   }
 
   function EquipmentStackScreen() {
+    const EquipmentStack = createStackNavigator();
+
     return (
-      <HomeStack.Navigator>
-        <HomeStack.Screen
+      <EquipmentStack.Navigator>
+        <EquipmentStack.Screen
           name="Equipment"
           component={EquipmentView}
           options={headerOptions}
         />
-        <HomeStack.Screen
+        <EquipmentStack.Screen
           name="Equipment Item"
           component={ComponentListView}
           options={headerOptions}
         />
-        <HomeStack.Screen
+        <EquipmentStack.Screen
           name="Component"
           component={ComponentInformationView}
           options={headerOptions}
         />
-      </HomeStack.Navigator>
+      </EquipmentStack.Navigator>
     );
   }
 
   function ScanStackScreen() {
+    const ScanStack = createStackNavigator();
+
     return (
-      <HomeStack.Navigator>
-        <HomeStack.Screen
+      <ScanStack.Navigator>
+        <ScanStack.Screen
           name="Scan"
           component={QrReaderView}
           options={headerOptions}
         />
-      </HomeStack.Navigator>
+        <ScanStack.Screen
+          name="Result"
+          component={ScanResultView}
+          options={headerOptions}
+        />
+      </ScanStack.Navigator>
     );
   }
 
   function AnalyticsStackScreen() {
+    const AnalyticsStack = createStackNavigator();
+
     return (
-      <HomeStack.Navigator>
-        <HomeStack.Screen
+      <AnalyticsStack.Navigator>
+        <AnalyticsStack.Screen
           name="Analytics"
           component={AnalyticsView}
           options={headerOptions}
         />
-        <HomeStack.Screen
+        <AnalyticsStack.Screen
           name="Overall"
           component={OverallAnalyticsView}
           options={headerOptions}
         />
-      </HomeStack.Navigator>
+      </AnalyticsStack.Navigator>
     );
   }
 
