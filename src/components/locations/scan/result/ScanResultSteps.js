@@ -6,6 +6,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 export default function ScanResultSteps(props) {
   const [steps, setSteps] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activeSessions, setActiveSessions] = useState([]);
 
   useEffect(() => {
     let unmounted = false;
@@ -61,14 +62,8 @@ export default function ScanResultSteps(props) {
     );
   }
 
-  function updateSections(section) {}
-
-  function renderSectionTitle(section) {
-    return (
-      <View>
-        <Text>{section.description}</Text>
-      </View>
-    );
+  function updateSections(sections) {
+    setActiveSessions(sections);
   }
 
   return (
@@ -77,9 +72,8 @@ export default function ScanResultSteps(props) {
         sections={steps}
         renderHeader={renderHeader}
         renderContent={renderContent}
-        renderSectionTitle={renderSectionTitle}
         onChange={updateSections}
-        activeSections={[0]}
+        activeSections={activeSessions}
       />
     </Card>
   );
