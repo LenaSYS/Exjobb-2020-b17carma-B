@@ -28,6 +28,7 @@ export default function AnalyticsOptionsList(props) {
             size={26}
           />
         }
+        onPress={() => props.navigation.navigate('History')}
       />
       <ListItem
         title="Scan Test"

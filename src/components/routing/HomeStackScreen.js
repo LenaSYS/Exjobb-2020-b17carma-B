@@ -1,0 +1,28 @@
+import {createStackNavigator} from '@react-navigation/stack';
+import HomeView from '../locations/home/HomeView';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+
+const headerOptions = StyleSheet.create({
+  headerTintColor: '#fff',
+  headerStyle: {
+    backgroundColor: '#3f51b5',
+  },
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },
+});
+
+export default function HomeStackScreen() {
+  const HomeStack = createStackNavigator();
+
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="Home"
+        component={HomeView}
+        options={headerOptions}
+      />
+    </HomeStack.Navigator>
+  );
+}

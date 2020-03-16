@@ -1,7 +1,19 @@
 import React from 'react';
-import {Button, Text} from 'react-native';
-import {Card} from 'react-native-elements';
+import {Text, View, StyleSheet} from 'react-native';
+import {Button, Card} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/core';
+
+const styles = StyleSheet.create({
+  button: {
+    flex: 1,
+    margin: 5,
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+});
 
 export default function ScanResultOptions(props) {
   const navigation = useNavigation();
@@ -28,9 +40,23 @@ export default function ScanResultOptions(props) {
   return (
     <Card>
       <Text>Is this component functioning properly?</Text>
-      <Button title="Yes" onPress={() => sendResults(true)} />
-      <Button title="No" onPress={() => sendResults(false)} />
-      <Button title="No" onPress={() => navigation.navigate('Equipment')} />
+      <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          title="Yes"
+          onPress={() => sendResults(true)}
+        />
+        <Button
+          style={styles.button}
+          title="No"
+          onPress={() => sendResults(false)}
+        />
+        <Button
+          style={styles.button}
+          title="Cancel"
+          onPress={() => navigation.goBack()}
+        />
+      </View>
     </Card>
   );
 }
