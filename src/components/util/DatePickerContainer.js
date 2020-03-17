@@ -6,7 +6,7 @@ import {Divider} from 'react-native-elements';
 export default function DatePickerContainer(props) {
   return (
     <View>
-      <div>
+      <View>
         <DateTimePicker
           mode="date"
           id="start-date-picker"
@@ -15,8 +15,8 @@ export default function DatePickerContainer(props) {
           format="MM/DD/YYYY"
           onChange={props.handleStartDateChange}
         />
-      </div>
-      <div>
+      </View>
+      <View>
         <DateTimePicker
           mode="date"
           id="end-date-picker"
@@ -25,7 +25,7 @@ export default function DatePickerContainer(props) {
           format="MM/DD/YYYY"
           onChange={props.handleEndDateChange}
         />
-      </div>
+      </View>
       <Divider />
     </View>
   );
