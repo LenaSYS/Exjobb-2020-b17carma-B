@@ -1,12 +1,13 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Dimensions, View} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
+import {useFocusEffect} from '@react-navigation/core';
 
 export default function OverallPieChart() {
   const [overallData, setOverallData] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     async function fetchStatData() {

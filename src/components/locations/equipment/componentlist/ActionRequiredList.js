@@ -1,14 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import ContainedOverlineText from '../../../util/ContainedOverlineText';
 import {ListItem} from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useFocusEffect} from '@react-navigation/core';
 
 export default function ActionRequiredList(props) {
   const [requiredComponents, setRequiredComponents] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     async function fetchRequiredComponents() {

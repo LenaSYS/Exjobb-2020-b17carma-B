@@ -1,14 +1,15 @@
 import ComponentIcon from './ComponentIcon';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import ContainedOverlineText from '../../../util/ContainedOverlineText';
 import {ListItem} from 'react-native-elements';
+import {useFocusEffect} from '@react-navigation/core';
 
 export default function ComponentList(props) {
   const [components, setComponents] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     async function fetchComponentList() {

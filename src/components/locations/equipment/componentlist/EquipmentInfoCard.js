@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Card} from 'react-native-elements';
 import TranslatedImage from '../../../util/TranslatedImage';
+import {useFocusEffect} from '@react-navigation/core';
 
 const styles = StyleSheet.create({
   title: {
@@ -24,7 +25,7 @@ export default function EquipmentInfoCard(props) {
   const [equipment, setEquipment] = React.useState({});
   const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     async function fetchEquipmentInfo() {

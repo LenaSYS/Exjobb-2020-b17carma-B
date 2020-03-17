@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ListItem} from 'react-native-elements';
-import {SafeAreaView, SectionList, Text, View} from 'react-native';
+import {SectionList, Text, View} from 'react-native';
+import {useFocusEffect} from '@react-navigation/core';
 
 export default function ScanOverviewList(props) {
   const [overview, setOverview] = useState([]);
@@ -18,7 +19,7 @@ export default function ScanOverviewList(props) {
     }
   };
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     let startDate = moment(props.startDate);
@@ -77,18 +78,16 @@ export default function ScanOverviewList(props) {
   }
 
   return (
-    <SafeAreaView>
-      <SectionList
-        sections={overview}
-        keyExtractor={(item, index) => item + index}
-        renderItem={({item}) => <Item component={item} />}
-        stickySectionHeadersEnabled
-        renderSectionHeader={({section: {date}}) => (
-          <ListItem
-            title={<Text>{moment(date).format('DD/MM/YY - dddd')}</Text>}
-          />
-        )}
-      />
-    </SafeAreaView>
+    <SectionList
+      sections={overview}
+      keyExtractor={(item, index) => item + index}
+      renderItem={({item}) => <Item component={item} />}
+      stickySectionHeadersEnabled
+      renderSectionHeader={({section: {date}}) => (
+        <ListItem
+          title={<Text>{moment(date).format('DD/MM/YY - dddd')}</Text>}
+        />
+      )}
+    />
   );
 }

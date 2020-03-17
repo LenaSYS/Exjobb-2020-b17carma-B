@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View} from 'react-native';
 import {Card} from 'react-native-elements';
 import Accordion from 'react-native-collapsible/Accordion';
+import {useFocusEffect} from '@react-navigation/core';
 
 export default function ScanResultSteps(props) {
   const [steps, setSteps] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeSessions, setActiveSessions] = useState([0]);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     async function fetchStepData() {

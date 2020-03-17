@@ -1,16 +1,17 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import ComponentScanHistoryList from './ComponentScanHistoryList';
 import ComponentInformationCard from './ComponentInformationCard';
 import ComponentFrequency from './ComponentFrequency';
 import ComponentActions from './ComponentActions';
 import ContainedOverlineText from '../../../../util/ContainedOverlineText';
 import {ScrollView, View} from 'react-native';
+import {useFocusEffect} from '@react-navigation/core';
 
 export default function ComponentInformationView({route, navigation}) {
   const [component, setComponent] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     async function fetchComponentData() {

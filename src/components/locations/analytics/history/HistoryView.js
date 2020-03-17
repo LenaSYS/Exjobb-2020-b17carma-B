@@ -2,29 +2,37 @@ import React from 'react';
 import DatePickerContainer from '../../../util/DatePickerContainer';
 import moment from 'moment';
 import ScanOverviewList from '../../home/ScanOverviewList';
-import {View} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 
 export default function HistoryView() {
-  const startMonthDate = moment().startOf('month');
-  const endMonthDate = moment().endOf('month');
+  const startMonthDate = moment()
+    .startOf('month')
+    .toDate();
+  const endMonthDate = moment()
+    .endOf('month')
+    .toDate();
 
   const [startDate, setStartDate] = React.useState(startMonthDate);
   const [endDate, setEndDate] = React.useState(endMonthDate);
 
   const handleStartDateChange = date => {
-    if (date < endDate) {
-      setStartDate(date);
+    let newDate = new Date(date);
+
+    if (newDate < endDate) {
+      setStartDate(newDate);
     }
   };
 
   const handleEndDateChange = date => {
-    if (date > startDate) {
-      setEndDate(date);
+    let newDate = new Date(date);
+
+    if (newDate > startDate) {
+      setEndDate(newDate);
     }
   };
 
   return (
-    <View>
+    <SafeAreaView>
       <DatePickerContainer
         startDate={startDate}
         endDate={endDate}
@@ -32,6 +40,6 @@ export default function HistoryView() {
         handleEndDateChange={handleEndDateChange}
       />
       <ScanOverviewList startDate={startDate} endDate={endDate} />
-    </View>
+    </SafeAreaView>
   );
 }

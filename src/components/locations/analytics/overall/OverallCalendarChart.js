@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react';
-import {Dimensions, ScrollView, View} from 'react-native';
+import React from 'react';
+import {ScrollView, View} from 'react-native';
 import {ContributionGraph} from 'react-native-chart-kit';
 import moment from 'moment';
+import {useFocusEffect} from '@react-navigation/core';
 
 export default function OverallCalendarChart() {
   const [calendar, setCalendar] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     async function fetchCalendarData() {

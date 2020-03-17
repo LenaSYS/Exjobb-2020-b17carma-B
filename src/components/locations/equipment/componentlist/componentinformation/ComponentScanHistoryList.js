@@ -1,16 +1,17 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import moment from 'moment';
 import ContainedOverlineText from '../../../../util/ContainedOverlineText';
 import {View} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useFocusEffect} from '@react-navigation/core';
 
 const ComponentScanHistoryList = props => {
   const [scans, setScans] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const scanLimit = 5;
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     async function fetchScanData() {

@@ -31,6 +31,7 @@ export default function ScanResultOptions(props) {
         status: status,
       }),
     }).then(() => {
+      navigation.replace('Scan');
       navigation.navigate('Equipment Item', {
         equipmentId: props.component.equipment._id,
       });

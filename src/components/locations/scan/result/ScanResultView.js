@@ -1,14 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import ScanResultSteps from './ScanResultSteps';
 import ScanResultOptions from './ScanResultOptions';
 import ComponentInformationCard from '../../equipment/componentlist/componentinformation/ComponentInformationCard';
 import {ScrollView, View} from 'react-native';
+import {useFocusEffect} from '@react-navigation/core';
 
 export default function ScanResultView({route, navigation}) {
   const [component, setComponent] = React.useState({});
   const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     async function fetchComponentData() {

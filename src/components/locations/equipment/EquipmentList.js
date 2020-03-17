@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Button, Card, Icon} from 'react-native-elements';
+import {Button, Card} from 'react-native-elements';
 import TranslatedImage from '../../util/TranslatedImage';
+import {useFocusEffect} from '@react-navigation/core';
 
 const styles = StyleSheet.create({
   title: {
@@ -18,7 +19,7 @@ export default function EquipmentList(props) {
   const [equipment, setEquipment] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     let unmounted = false;
 
     async function fetchEquipmentData() {
