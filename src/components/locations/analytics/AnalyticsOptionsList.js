@@ -30,25 +30,6 @@ export default function AnalyticsOptionsList(props) {
         }
         onPress={() => props.navigation.navigate('History')}
       />
-      <ListItem
-        title="Scan Test"
-        leftIcon={
-          <MaterialCommunityIcons
-            name="clipboard-text"
-            color="#9E9E9E"
-            size={26}
-          />
-        }
-        onPress={() => {
-          props.navigation.navigate('Scan', {
-            screen: 'Result',
-            params: {
-              equipmentId: '5e53f1c36c7df42438366bde',
-              componentId: '5e53f1c36c7df42438366be0',
-            },
-          });
-        }}
-      />
     </ScrollView>
   );
 }

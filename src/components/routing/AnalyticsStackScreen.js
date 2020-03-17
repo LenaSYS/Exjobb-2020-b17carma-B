@@ -2,10 +2,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import AnalyticsView from '../locations/analytics/AnalyticsView';
 import OverallAnalyticsView from '../locations/analytics/overall/OverallAnalyticsView';
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import HistoryView from '../locations/analytics/history/HistoryView';
 
-const headerOptions = StyleSheet.create({
+const headerOptions = {
   headerTintColor: '#fff',
   headerStyle: {
     backgroundColor: '#3f51b5',
@@ -13,7 +12,7 @@ const headerOptions = StyleSheet.create({
   headerTitleStyle: {
     fontWeight: 'bold',
   },
-});
+};
 
 export default function AnalyticsStackScreen() {
   const AnalyticsStack = createStackNavigator();

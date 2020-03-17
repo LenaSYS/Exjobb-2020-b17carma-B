@@ -3,9 +3,8 @@ import EquipmentView from '../locations/equipment/EquipmentView';
 import ComponentListView from '../locations/equipment/componentlist/ComponentListView';
 import ComponentInformationView from '../locations/equipment/componentlist/componentinformation/ComponentInformationView';
 import React from 'react';
-import {StyleSheet} from 'react-native';
 
-const headerOptions = StyleSheet.create({
+const headerOptions = {
   headerTintColor: '#fff',
   headerStyle: {
     backgroundColor: '#3f51b5',
@@ -13,7 +12,7 @@ const headerOptions = StyleSheet.create({
   headerTitleStyle: {
     fontWeight: 'bold',
   },
-});
+};
 
 export default function EquipmentStackScreen() {
   const EquipmentStack = createStackNavigator();

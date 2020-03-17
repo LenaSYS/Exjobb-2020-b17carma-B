@@ -1,35 +1,17 @@
 import QRCodeScanner from 'react-native-qrcode-scanner';
-import {Text, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
-import {StyleSheet} from 'react-native';
+import {Alert, StyleSheet} from 'react-native';
+import React from 'react';
 
-const styles = StyleSheet.create({
-  centerText: {
-    flex: 1,
-    fontSize: 18,
-    padding: 32,
-    color: '#777',
-  },
-  textBold: {
-    fontWeight: '500',
-    color: '#000',
-  },
-  buttonText: {
-    fontSize: 21,
-    color: 'rgb(0,122,255)',
-  },
-  buttonTouchable: {
-    padding: 16,
-  },
-});
+export default function QrReaderView(props) {
+  function handleScan(event) {
+    let data = event.data;
 
-export default function QrReaderView() {
-  const [error, setError] = useState(false);
-
-  function handleScan(data) {
     if (data) {
       if (!data.includes(';')) {
-        setError(true);
+        Alert.alert(
+          'Invalid QR-Code',
+          'The QR code scanned was not associated with any equipment',
+        );
         return;
       }
 
@@ -37,9 +19,15 @@ export default function QrReaderView() {
       let equipment = split[0];
       let component = split[1];
 
-      console.log('/scan/' + equipment + '/' + component); //TODO
+      props.navigation.navigate('Scan', {
+        screen: 'Result',
+        params: {
+          equipmentId: equipment,
+          componentId: component,
+        },
+      });
     }
   }
 
-  return <QRCodeScanner onRead={handleScan} />;
+  return <QRCodeScanner onRead={handleScan} reactivate={true} />;
 }
