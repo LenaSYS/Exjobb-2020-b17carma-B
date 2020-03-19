@@ -28,6 +28,10 @@ export default function WeekScanResponsiveLineChart(props) {
         return;
       }
 
+      data.datasets[0].color = (opacity = 1) => `rgba(232, 193, 160, ${1})`;
+
+      data.datasets[1].color = (opacity = 1) => `rgba(244, 117, 96, ${1})`;
+
       setChartData(data);
       setLoading(false);
     }
@@ -55,7 +59,8 @@ export default function WeekScanResponsiveLineChart(props) {
           backgroundColor: '#fff',
           backgroundGradientFrom: '#fff',
           backgroundGradientTo: '#fff',
-          decimalPlaces: 2, // optional, defaults to 2dp
+          fillShadowGradientOpacity: 0,
+          strokeWidth: 2,
           color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
         }}
       />
