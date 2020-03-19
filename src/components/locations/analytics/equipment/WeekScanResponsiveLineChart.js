@@ -19,7 +19,8 @@ export default function WeekScanResponsiveLineChart(props) {
           '/' +
           moment(props.startDate).format() +
           '/' +
-          moment(props.endDate).format(),
+          moment(props.endDate).format() +
+          '/native',
       );
       const data = await res.json();
 
@@ -44,7 +45,7 @@ export default function WeekScanResponsiveLineChart(props) {
   }
 
   return (
-    <div>
+    <View>
       <ContainedOverlineText text="Scans by week" />
       <View>
         <LineChart
@@ -69,6 +70,6 @@ export default function WeekScanResponsiveLineChart(props) {
           }}
         />
       </View>
-    </div>
+    </View>
   );
 }

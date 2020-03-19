@@ -5,21 +5,29 @@ import WeekScanResponsiveLineChart from './WeekScanResponsiveLineChart';
 import {View} from 'react-native';
 
 export default function EquipmentAnalyticsView({route}) {
-  const startMonthDate = moment().startOf('month');
-  const endMonthDate = moment().endOf('month');
+  const startMonthDate = moment()
+    .startOf('month')
+    .toDate();
+  const endMonthDate = moment()
+    .endOf('month')
+    .toDate();
 
   const [startDate, setStartDate] = React.useState(startMonthDate);
   const [endDate, setEndDate] = React.useState(endMonthDate);
 
   const handleStartDateChange = date => {
-    if (date < endDate) {
-      setStartDate(date);
+    let newDate = new Date(date);
+
+    if (newDate < endDate) {
+      setStartDate(newDate);
     }
   };
 
   const handleEndDateChange = date => {
-    if (date > startDate) {
-      setEndDate(date);
+    let newDate = new Date(date);
+
+    if (newDate > startDate) {
+      setEndDate(newDate);
     }
   };
 
