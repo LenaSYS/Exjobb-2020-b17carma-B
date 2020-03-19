@@ -53,6 +53,7 @@ export default function EquipmentList(props) {
   return equipment.map((equip, i) => (
     <TouchableOpacity
       key={i}
+      activeOpacity={0.6}
       onPress={() =>
         props.navigation.navigate('Equipment Item', {
           equipmentId: equip._id,
