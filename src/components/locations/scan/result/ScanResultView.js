@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import ScanResultSteps from './ScanResultSteps';
 import ScanResultOptions from './ScanResultOptions';
 import ComponentInformationCard from '../../equipment/componentlist/componentinformation/ComponentInformationCard';
@@ -9,34 +9,36 @@ export default function ScanResultView({route, navigation}) {
   const [component, setComponent] = React.useState({});
   const [loading, setLoading] = React.useState(true);
 
-  useFocusEffect(() => {
-    let unmounted = false;
+  useFocusEffect(
+    useCallback(() => {
+      let unmounted = false;
 
-    async function fetchComponentData() {
-      const res = await fetch(
-        'https://api.carlmaier.se' +
-          '/components/' +
-          route.params.equipmentId +
-          '/' +
-          route.params.componentId,
-      );
-      const component = await res.json();
+      async function fetchComponentData() {
+        const res = await fetch(
+          'https://api.carlmaier.se' +
+            '/components/' +
+            route.params.equipmentId +
+            '/' +
+            route.params.componentId,
+        );
+        const component = await res.json();
 
-      if (unmounted) {
-        return;
+        if (unmounted) {
+          return;
+        }
+
+        setComponent(component);
+        setLoading(false);
       }
 
-      setComponent(component);
-      setLoading(false);
-    }
+      fetchComponentData();
 
-    fetchComponentData();
-
-    console.log('Fetched component data');
-    return () => {
-      unmounted = true;
-    };
-  }, [route.params.equipmentId, route.params.componentId]);
+      console.log('Fetched component data');
+      return () => {
+        unmounted = true;
+      };
+    }, [route.params.equipmentId, route.params.componentId]),
+  );
 
   if (loading) {
     return <View />;

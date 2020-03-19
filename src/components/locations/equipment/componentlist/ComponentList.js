@@ -1,5 +1,5 @@
 import ComponentIcon from './ComponentIcon';
-import React from 'react';
+import React, {useCallback} from 'react';
 import {View} from 'react-native';
 import ContainedOverlineText from '../../../util/ContainedOverlineText';
 import {ListItem} from 'react-native-elements';
@@ -9,30 +9,32 @@ export default function ComponentList(props) {
   const [components, setComponents] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  useFocusEffect(() => {
-    let unmounted = false;
+  useFocusEffect(
+    useCallback(() => {
+      let unmounted = false;
 
-    async function fetchComponentList() {
-      const res = await fetch(
-        'https://api.carlmaier.se' + '/components/' + props.equipmentId,
-      );
-      const components = await res.json();
+      async function fetchComponentList() {
+        const res = await fetch(
+          'https://api.carlmaier.se' + '/components/' + props.equipmentId,
+        );
+        const components = await res.json();
 
-      if (unmounted) {
-        return;
+        if (unmounted) {
+          return;
+        }
+
+        setLoading(false);
+        setComponents(components);
       }
 
-      setLoading(false);
-      setComponents(components);
-    }
+      fetchComponentList();
 
-    fetchComponentList();
-
-    console.log('Fetched component list');
-    return () => {
-      unmounted = true;
-    };
-  }, [props.equipmentId]);
+      console.log('Fetched component list');
+      return () => {
+        unmounted = true;
+      };
+    }, [props.equipmentId]),
+  );
 
   if (loading) {
     return <View />;

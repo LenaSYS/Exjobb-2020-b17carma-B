@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {View} from 'react-native';
 import ContainedOverlineText from '../../../util/ContainedOverlineText';
 import {ListItem} from 'react-native-elements';
@@ -9,30 +9,32 @@ export default function ActionRequiredList(props) {
   const [requiredComponents, setRequiredComponents] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  useFocusEffect(() => {
-    let unmounted = false;
+  useFocusEffect(
+    useCallback(() => {
+      let unmounted = false;
 
-    async function fetchRequiredComponents() {
-      const res = await fetch(
-        'https://api.carlmaier.se' + '/scan/required/' + props.equipmentId,
-      );
-      const components = await res.json();
+      async function fetchRequiredComponents() {
+        const res = await fetch(
+          'https://api.carlmaier.se' + '/scan/required/' + props.equipmentId,
+        );
+        const components = await res.json();
 
-      if (unmounted) {
-        return;
+        if (unmounted) {
+          return;
+        }
+
+        setRequiredComponents(components);
+        setLoading(false);
       }
 
-      setRequiredComponents(components);
-      setLoading(false);
-    }
+      fetchRequiredComponents();
 
-    fetchRequiredComponents();
-
-    console.log('Fetched required components');
-    return () => {
-      unmounted = true;
-    };
-  }, [props.equipmentId]);
+      console.log('Fetched required components');
+      return () => {
+        unmounted = true;
+      };
+    }, [props.equipmentId]),
+  );
 
   if (loading) {
     return <View />; //TODO

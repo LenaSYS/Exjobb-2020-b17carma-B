@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {ScrollView, View} from 'react-native';
 import {ContributionGraph} from 'react-native-chart-kit';
 import moment from 'moment';
@@ -8,33 +8,35 @@ export default function OverallCalendarChart() {
   const [calendar, setCalendar] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  useFocusEffect(() => {
-    let unmounted = false;
+  useFocusEffect(
+    useCallback(() => {
+      let unmounted = false;
 
-    async function fetchCalendarData() {
-      const res = await fetch(
-        'https://api.carlmaier.se' + '/analytics/calendar',
-      );
-      const data = await res.text();
-      const formattedData = data
-        .replace(/day/g, 'date')
-        .replace(/value/g, 'count');
-      if (unmounted) {
-        return;
+      async function fetchCalendarData() {
+        const res = await fetch(
+          'https://api.carlmaier.se' + '/analytics/calendar',
+        );
+        const data = await res.text();
+        const formattedData = data
+          .replace(/day/g, 'date')
+          .replace(/value/g, 'count');
+        if (unmounted) {
+          return;
+        }
+
+        setCalendar(JSON.parse(formattedData));
+        setLoading(false);
+        console.log(formattedData);
       }
 
-      setCalendar(JSON.parse(formattedData));
-      setLoading(false);
-      console.log(formattedData);
-    }
+      fetchCalendarData();
 
-    fetchCalendarData();
-
-    console.log('Fetched calendar data');
-    return () => {
-      unmounted = true;
-    };
-  }, []);
+      console.log('Fetched calendar data');
+      return () => {
+        unmounted = true;
+      };
+    }, []),
+  );
 
   if (loading) {
     return <View />; //TODO

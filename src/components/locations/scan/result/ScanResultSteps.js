@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Text, View} from 'react-native';
 import {Card} from 'react-native-elements';
 import Accordion from 'react-native-collapsible/Accordion';
@@ -9,39 +9,41 @@ export default function ScanResultSteps(props) {
   const [loading, setLoading] = useState(true);
   const [activeSessions, setActiveSessions] = useState([0]);
 
-  useFocusEffect(() => {
-    let unmounted = false;
+  useFocusEffect(
+    useCallback(() => {
+      let unmounted = false;
 
-    async function fetchStepData() {
-      const res = await fetch(
-        'https://api.carlmaier.se' +
-          '/components/' +
-          props.component.equipment._id +
-          '/' +
-          props.component._id +
-          '/steps',
-      );
+      async function fetchStepData() {
+        const res = await fetch(
+          'https://api.carlmaier.se' +
+            '/components/' +
+            props.component.equipment._id +
+            '/' +
+            props.component._id +
+            '/steps',
+        );
 
-      res
-        .json()
-        .then(res => {
-          if (unmounted) {
-            return;
-          }
+        res
+          .json()
+          .then(res => {
+            if (unmounted) {
+              return;
+            }
 
-          setSteps(res);
-          setLoading(false);
-        })
-        .catch(console.log);
-    }
+            setSteps(res);
+            setLoading(false);
+          })
+          .catch(console.log);
+      }
 
-    fetchStepData();
+      fetchStepData();
 
-    console.log('Fetched step data');
-    return () => {
-      unmounted = true;
-    };
-  }, [props.component.equipment, props.component._id]);
+      console.log('Fetched step data');
+      return () => {
+        unmounted = true;
+      };
+    }, [props.component.equipment, props.component._id]),
+  );
 
   if (loading || steps.length === 0) {
     return <View />;

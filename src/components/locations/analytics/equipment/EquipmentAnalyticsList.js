@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Button, Card} from 'react-native-elements';
 import {useFocusEffect} from '@react-navigation/core';
@@ -19,32 +19,34 @@ export default function EquipmentList(props) {
   const [equipment, setEquipment] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useFocusEffect(() => {
-    let unmounted = false;
+  useFocusEffect(
+    useCallback(() => {
+      let unmounted = false;
 
-    async function fetchEquipmentData() {
-      const res = await fetch('https://api.carlmaier.se' + '/equipment');
+      async function fetchEquipmentData() {
+        const res = await fetch('https://api.carlmaier.se' + '/equipment');
 
-      res
-        .json()
-        .then(res => {
-          if (unmounted) {
-            return;
-          }
+        res
+          .json()
+          .then(res => {
+            if (unmounted) {
+              return;
+            }
 
-          setEquipment(res);
-          setLoading(false);
-        })
-        .catch(console.log);
-    }
+            setEquipment(res);
+            setLoading(false);
+          })
+          .catch(console.log);
+      }
 
-    fetchEquipmentData();
+      fetchEquipmentData();
 
-    console.log('Fetched equipment data');
-    return () => {
-      unmounted = true;
-    };
-  }, []);
+      console.log('Fetched equipment data');
+      return () => {
+        unmounted = true;
+      };
+    }, []),
+  );
 
   if (loading) {
     return <View />;

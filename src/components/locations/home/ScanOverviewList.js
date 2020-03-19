@@ -1,9 +1,19 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ListItem} from 'react-native-elements';
-import {SectionList, Text, View} from 'react-native';
+import {SectionList, StyleSheet, Text, View} from 'react-native';
 import {useFocusEffect} from '@react-navigation/core';
+
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: 'white',
+    paddingLeft: 16,
+  },
+  headerText: {
+    color: 'grey',
+  },
+});
 
 export default function ScanOverviewList(props) {
   const [overview, setOverview] = useState([]);
@@ -19,47 +29,47 @@ export default function ScanOverviewList(props) {
     }
   };
 
-  useFocusEffect(() => {
-    let unmounted = false;
+  useFocusEffect(
+    useCallback(() => {
+      let unmounted = false;
 
-    let startDate = moment(props.startDate);
-    let endDate = moment(props.endDate);
+      let startDate = moment(props.startDate);
+      let endDate = moment(props.endDate);
 
-    async function fetchOverviewData() {
-      const res = await fetch(
-        'https://api.carlmaier.se' +
-          '/analytics/overview/' +
-          startDate.format() +
-          '/' +
-          endDate.format(),
-      );
+      async function fetchOverviewData() {
+        const res = await fetch(
+          'https://api.carlmaier.se' +
+            '/analytics/overview/' +
+            startDate.format() +
+            '/' +
+            endDate.format(),
+        );
 
-      res
-        .json()
-        .then(data => {
-          if (unmounted) {
-            return;
-          }
+        res
+          .json()
+          .then(data => {
+            if (unmounted) {
+              return;
+            }
 
-          setOverview(data);
-          setLoading(false);
-        })
-        .catch(console.log);
-    }
+            setOverview(data);
+            setLoading(false);
+          })
+          .catch(console.log);
+      }
 
-    fetchOverviewData();
+      fetchOverviewData();
 
-    console.log('Fetched overview data');
-    return () => {
-      unmounted = true;
-    };
-  }, [props, props.startDate, props.endDate]);
+      console.log('Fetched overview data');
+      return () => {
+        unmounted = true;
+      };
+    }, [props]),
+  );
 
   if (loading) {
     return <View />;
   }
-
-  console.log(overview);
 
   function Item({component}) {
     return (
@@ -77,17 +87,24 @@ export default function ScanOverviewList(props) {
     );
   }
 
+  function HeaderItem({date}) {
+    return (
+      <View style={styles.header}>
+        <Text style={styles.headerText}>
+          {moment(date).format('DD/MM/YY - dddd') +
+            (Math.floor(Math.random() * 100) + 1)}
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <SectionList
       sections={overview}
-      keyExtractor={(item, index) => index.toString()}
+      keyExtractor={(item, index) => item + index}
       renderItem={({item}) => <Item component={item} />}
       stickySectionHeadersEnabled
-      renderSectionHeader={({section: {date}}) => (
-        <ListItem
-          title={<Text>{moment(date).format('DD/MM/YY - dddd')}</Text>}
-        />
-      )}
+      renderSectionHeader={({section: {date}}) => <HeaderItem date={date} />}
     />
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import moment from 'moment';
 import ContainedOverlineText from '../../../../util/ContainedOverlineText';
 import {View} from 'react-native';
@@ -11,36 +11,38 @@ const ComponentScanHistoryList = props => {
   const [loading, setLoading] = React.useState(true);
   const scanLimit = 5;
 
-  useFocusEffect(() => {
-    let unmounted = false;
+  useFocusEffect(
+    useCallback(() => {
+      let unmounted = false;
 
-    async function fetchScanData() {
-      const res = await fetch(
-        'https://api.carlmaier.se' +
-          '/scan/' +
-          props.equipmentId +
-          '/' +
-          props.componentId +
-          '/' +
-          scanLimit,
-      );
-      const data = await res.json();
+      async function fetchScanData() {
+        const res = await fetch(
+          'https://api.carlmaier.se' +
+            '/scan/' +
+            props.equipmentId +
+            '/' +
+            props.componentId +
+            '/' +
+            scanLimit,
+        );
+        const data = await res.json();
 
-      if (unmounted) {
-        return;
+        if (unmounted) {
+          return;
+        }
+
+        setScans(data);
+        setLoading(false);
       }
 
-      setScans(data);
-      setLoading(false);
-    }
+      fetchScanData();
 
-    fetchScanData();
-
-    console.log('Fetched scan data');
-    return () => {
-      unmounted = true;
-    };
-  }, [props.equipmentId, props.componentId]);
+      console.log('Fetched scan data');
+      return () => {
+        unmounted = true;
+      };
+    }, [props.equipmentId, props.componentId]),
+  );
 
   if (loading) {
     return <View />;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Card} from 'react-native-elements';
 import TranslatedImage from '../../../util/TranslatedImage';
@@ -25,29 +25,31 @@ export default function EquipmentInfoCard(props) {
   const [equipment, setEquipment] = React.useState({});
   const [loading, setLoading] = React.useState(true);
 
-  useFocusEffect(() => {
-    let unmounted = false;
+  useFocusEffect(
+    useCallback(() => {
+      let unmounted = false;
 
-    async function fetchEquipmentInfo() {
-      const res = await fetch(
-        'https://api.carlmaier.se' + '/equipment/' + props.equipmentId,
-      );
-      const data = await res.json();
+      async function fetchEquipmentInfo() {
+        const res = await fetch(
+          'https://api.carlmaier.se' + '/equipment/' + props.equipmentId,
+        );
+        const data = await res.json();
 
-      if (unmounted) {
-        return;
+        if (unmounted) {
+          return;
+        }
+
+        setEquipment(data);
+        setLoading(false);
       }
 
-      setEquipment(data);
-      setLoading(false);
-    }
-
-    fetchEquipmentInfo();
-    console.log('Fetched equipment info');
-    return () => {
-      unmounted = true;
-    };
-  }, [props.equipmentId]);
+      fetchEquipmentInfo();
+      console.log('Fetched equipment info');
+      return () => {
+        unmounted = true;
+      };
+    }, [props.equipmentId]),
+  );
 
   if (loading) {
     return <View />;
