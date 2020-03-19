@@ -80,7 +80,7 @@ export default function ScanOverviewList(props) {
   return (
     <SectionList
       sections={overview}
-      keyExtractor={(item, index) => item + index}
+      keyExtractor={(item, index) => index.toString()}
       renderItem={({item}) => <Item component={item} />}
       stickySectionHeadersEnabled
       renderSectionHeader={({section: {date}}) => (

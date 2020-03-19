@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Button, Card} from 'react-native-elements';
-import TranslatedImage from '../../util/TranslatedImage';
 import {useFocusEffect} from '@react-navigation/core';
+import TranslatedImage from '../../../util/TranslatedImage';
 
 const styles = StyleSheet.create({
   title: {
@@ -54,7 +54,7 @@ export default function EquipmentList(props) {
     <TouchableOpacity
       key={i}
       onPress={() =>
-        props.navigation.navigate('Equipment Item', {
+        props.navigation.navigate('Equipment Analytics Item', {
           equipmentId: equip._id,
         })
       }>

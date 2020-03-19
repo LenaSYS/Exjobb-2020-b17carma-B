@@ -3,6 +3,8 @@ import AnalyticsView from '../locations/analytics/AnalyticsView';
 import OverallAnalyticsView from '../locations/analytics/overall/OverallAnalyticsView';
 import React from 'react';
 import HistoryView from '../locations/analytics/history/HistoryView';
+import EquipmentAnalyticsListView from '../locations/analytics/equipment/EquipmentAnalyticsListView';
+import EquipmentAnalyticsView from '../locations/analytics/equipment/EquipmentAnalyticsView';
 
 const headerOptions = {
   headerTintColor: '#fff',
@@ -32,6 +34,16 @@ export default function AnalyticsStackScreen() {
       <AnalyticsStack.Screen
         name="History"
         component={HistoryView}
+        options={headerOptions}
+      />
+      <AnalyticsStack.Screen
+        name="Equipment Analytics"
+        component={EquipmentAnalyticsListView}
+        options={headerOptions}
+      />
+      <AnalyticsStack.Screen
+        name="Equipment Analytics Item"
+        component={EquipmentAnalyticsView}
         options={headerOptions}
       />
     </AnalyticsStack.Navigator>
