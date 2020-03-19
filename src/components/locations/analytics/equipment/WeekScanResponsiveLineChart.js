@@ -47,29 +47,18 @@ export default function WeekScanResponsiveLineChart(props) {
   return (
     <View>
       <ContainedOverlineText text="Scans by week" />
-      <View>
-        <LineChart
-          data={chartData}
-          width={Dimensions.get('window').width}
-          height={250}
-          margin={{top: 5, right: 30, bottom: 50, left: 50}}
-          chartConfig={{
-            backgroundColor: '#e26a00',
-            backgroundGradientFrom: '#fb8c00',
-            backgroundGradientTo: '#ffa726',
-            decimalPlaces: 2, // optional, defaults to 2dp
-            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-            style: {
-              borderRadius: 16,
-            },
-          }}
-          bezier
-          style={{
-            marginVertical: 8,
-            borderRadius: 16,
-          }}
-        />
-      </View>
+      <LineChart
+        data={chartData}
+        width={Dimensions.get('window').width}
+        height={325}
+        chartConfig={{
+          backgroundColor: '#fff',
+          backgroundGradientFrom: '#fff',
+          backgroundGradientTo: '#fff',
+          decimalPlaces: 2, // optional, defaults to 2dp
+          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+        }}
+      />
     </View>
   );
 }
