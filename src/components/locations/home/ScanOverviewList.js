@@ -91,8 +91,7 @@ export default function ScanOverviewList(props) {
     return (
       <View style={styles.header}>
         <Text style={styles.headerText}>
-          {moment(date).format('DD/MM/YY - dddd') +
-            (Math.floor(Math.random() * 100) + 1)}
+          {moment(date).format('DD/MM/YY - dddd')}
         </Text>
       </View>
     );
