@@ -18,11 +18,12 @@ export default function EquipmentStackScreen() {
   const EquipmentStack = createStackNavigator();
 
   return (
-    <EquipmentStack.Navigator>
+    <EquipmentStack.Navigator initialRouteName="Equipment List">
       <EquipmentStack.Screen
-        name="Equipment"
+        name="Equipment List"
         component={EquipmentView}
         options={headerOptions}
+        initialParams={{type: 0}}
       />
       <EquipmentStack.Screen
         name="Equipment Item"

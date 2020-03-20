@@ -1,8 +1,15 @@
 import React, {useCallback, useState} from 'react';
-import {Text, View} from 'react-native';
-import {Card} from 'react-native-elements';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Card, Divider} from 'react-native-elements';
 import Accordion from 'react-native-collapsible/Accordion';
 import {useFocusEffect} from '@react-navigation/core';
+
+const styles = StyleSheet.create({
+  headerStyle: {
+    paddingTop: 7,
+    paddingBottom: 7,
+  },
+});
 
 export default function ScanResultSteps(props) {
   const [steps, setSteps] = useState([]);
@@ -51,7 +58,7 @@ export default function ScanResultSteps(props) {
 
   function renderHeader(section) {
     return (
-      <View>
+      <View style={styles.headerStyle}>
         <Text>{section.identifier}</Text>
       </View>
     );
@@ -73,6 +80,7 @@ export default function ScanResultSteps(props) {
     <Card>
       <Accordion
         sections={steps}
+        touchableComponent={TouchableOpacity}
         renderHeader={renderHeader}
         renderContent={renderContent}
         onChange={updateSections}

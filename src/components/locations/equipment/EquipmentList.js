@@ -57,9 +57,14 @@ export default function EquipmentList(props) {
       key={i}
       activeOpacity={0.6}
       onPress={() =>
-        props.navigation.navigate('Equipment Item', {
-          equipmentId: equip._id,
-        })
+        props.navigation.navigate(
+          props.route.params.type === 0
+            ? 'Equipment Item'
+            : 'Equipment Analytics Item',
+          {
+            equipmentId: equip._id,
+          },
+        )
       }>
       <Card key={i} image={TranslatedImage(equip.image)}>
         <Text style={styles.title}>{equip.identifier}</Text>

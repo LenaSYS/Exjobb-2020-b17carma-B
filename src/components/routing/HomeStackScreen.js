@@ -1,6 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeView from '../locations/home/HomeView';
 import React from 'react';
+import ComponentInformationView from '../locations/equipment/componentlist/componentinformation/ComponentInformationView';
 
 const headerOptions = {
   headerTintColor: '#fff',
@@ -20,6 +21,11 @@ export default function HomeStackScreen() {
       <HomeStack.Screen
         name="Home"
         component={HomeView}
+        options={headerOptions}
+      />
+      <HomeStack.Screen
+        name="Component"
+        component={ComponentInformationView}
         options={headerOptions}
       />
     </HomeStack.Navigator>

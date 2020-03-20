@@ -20,7 +20,7 @@ export default function BottomNavigation() {
       barStyle={styles.bar}
       activeColor="#3f51b5">
       <Tab.Screen
-        name="Home"
+        name="HomeTab"
         component={HomeStackScreen}
         options={{
           title: 'Home',
@@ -31,7 +31,7 @@ export default function BottomNavigation() {
         }}
       />
       <Tab.Screen
-        name="Equipment"
+        name="EquipmentTab"
         component={EquipmentStackScreen}
         options={{
           tabBarLabel: 'Equipment',
@@ -41,7 +41,7 @@ export default function BottomNavigation() {
         }}
       />
       <Tab.Screen
-        name="Scan"
+        name="ScanTab"
         component={ScanStackScreen}
         options={{
           tabBarLabel: 'Scan',
@@ -51,7 +51,7 @@ export default function BottomNavigation() {
         }}
       />
       <Tab.Screen
-        name="Analytics"
+        name="AnalyticsTab"
         component={AnalyticsStackScreen}
         options={{
           tabBarLabel: 'Analytics',

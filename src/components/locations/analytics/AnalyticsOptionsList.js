@@ -20,7 +20,11 @@ export default function AnalyticsOptionsList(props) {
         leftIcon={
           <MaterialCommunityIcons name="wrench" color="#9E9E9E" size={26} />
         }
-        onPress={() => props.navigation.navigate('Equipment Analytics')}
+        onPress={() =>
+          props.navigation.navigate('Equipment Analytics', {
+            type: 1,
+          })
+        }
       />
       <ListItem
         key="scanHistory"
