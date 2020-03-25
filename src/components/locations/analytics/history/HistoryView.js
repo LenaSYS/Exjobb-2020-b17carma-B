@@ -39,7 +39,7 @@ export default function HistoryView() {
         handleStartDateChange={handleStartDateChange}
         handleEndDateChange={handleEndDateChange}
       />
-      <ScanOverviewList startDate={startDate} endDate={endDate} />
+      <ScanOverviewList startDate={startDate} endDate={endDate} type={1}/>
     </SafeAreaView>
   );
 }

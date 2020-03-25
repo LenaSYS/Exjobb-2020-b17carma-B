@@ -80,13 +80,16 @@ export default function ScanOverviewList(props) {
         subtitle={component.equipment.identifier}
         leftIcon={<ListIcon component={component} />}
         onPress={() =>
-          props.navigation.navigate('HomeTab', {
-            screen: 'Component',
-            params: {
-              equipmentId: component.equipment._id,
-              componentId: component._id,
+          props.navigation.navigate(
+            props.type === 0 ? 'HomeTab' : 'Analytics',
+            {
+              screen: 'Component',
+              params: {
+                equipmentId: component.equipment._id,
+                componentId: component._id,
+              },
             },
-          })
+          )
         }
       />
     );

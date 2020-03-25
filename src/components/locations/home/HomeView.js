@@ -10,6 +10,7 @@ export default function HomeView({navigation}) {
         navigation={navigation}
         startDate={moment().startOf('isoWeek')}
         endDate={moment().endOf('isoWeek')}
+        type={0}
       />
     </SafeAreaView>
   );

@@ -1,8 +1,16 @@
 export default function TranslatedImage(image) {
-  if (image === 'machine.jpg') {
-    return require('../../img/machine.jpg');
-  } else if (image === 'machine2.jpg') {
-    return require('../../img/machine2.jpg');
+  switch (image) {
+    case 'machine.png':
+      return require('../../img/machine.png');
+    case 'machine2.png':
+      return require('../../img/machine2.png');
+    case 'bearings.png':
+      return require('../../img/bearings.png');
+    case 'gears.png':
+      return require('../../img/gears.png');
+    case 'hinge.png':
+      return require('../../img/hinge.png');
+    default:
+      return require('../../img/machine.png');
   }
-  return require('../../img/machine.jpg');
 }
