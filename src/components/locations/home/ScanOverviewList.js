@@ -81,7 +81,7 @@ export default function ScanOverviewList(props) {
         leftIcon={<ListIcon component={component} />}
         onPress={() =>
           props.navigation.navigate(
-            props.type === 0 ? 'HomeTab' : 'Analytics',
+            props.type === 0 ? 'HomeTab' : 'AnalyticsTab',
             {
               screen: 'Component',
               params: {
