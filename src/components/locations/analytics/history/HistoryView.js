@@ -4,7 +4,7 @@ import moment from 'moment';
 import ScanOverviewList from '../../home/ScanOverviewList';
 import {SafeAreaView, View} from 'react-native';
 
-export default function HistoryView() {
+export default function HistoryView({navigation}) {
   const startMonthDate = moment()
     .startOf('month')
     .toDate();
@@ -39,7 +39,7 @@ export default function HistoryView() {
         handleStartDateChange={handleStartDateChange}
         handleEndDateChange={handleEndDateChange}
       />
-      <ScanOverviewList startDate={startDate} endDate={endDate} type={1}/>
+      <ScanOverviewList navigation={navigation} startDate={startDate} endDate={endDate} type={1}/>
     </SafeAreaView>
   );
 }
