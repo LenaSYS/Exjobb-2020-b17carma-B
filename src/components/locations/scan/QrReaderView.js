@@ -1,9 +1,11 @@
 import QRCodeScanner from 'react-native-qrcode-scanner';
-import {Alert, StyleSheet, View} from 'react-native';
-import React from 'react';
+import {Alert, View} from 'react-native';
+import React, {useCallback, useRef} from 'react';
+import {useFocusEffect} from '@react-navigation/core';
 
-export default function QrReaderView({route, navigation}) {
+export default function QrReaderView({navigation}) {
   const [error, setError] = React.useState(false);
+  const scanner = useRef(null);
 
   function handleScan(event) {
     let data = event.data;
@@ -15,7 +17,15 @@ export default function QrReaderView({route, navigation}) {
         Alert.alert(
           'Invalid QR-Code',
           'The QR code scanned was not associated with any equipment',
-          [{text: 'OK', onPress: () => setError(false)}],
+          [
+            {
+              text: 'OK',
+              onPress: () => {
+                setError(false);
+                scanner.current.reactivate();
+              },
+            },
+          ],
         );
         return;
       }
@@ -31,12 +41,18 @@ export default function QrReaderView({route, navigation}) {
     }
   }
 
+  useFocusEffect(
+    useCallback(() => {
+      scanner.current.reactivate();
+    }, []),
+  );
+
   return (
     <View>
       <QRCodeScanner
+        ref={scanner}
+        reactivateTimeout={5000}
         onRead={handleScan}
-        reactivate={true}
-        reactivateTimeout={3000}
       />
     </View>
   );
