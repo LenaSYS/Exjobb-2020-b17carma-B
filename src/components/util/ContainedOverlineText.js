@@ -5,7 +5,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   text: {
     marginTop: 10,
-    marginLeft: 10,
+    marginLeft: 14,
     marginBottom: 6,
   },
 });
