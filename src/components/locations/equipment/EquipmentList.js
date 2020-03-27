@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   body: {
     fontWeight: '400',
     marginBottom: 8,
+    color: 'grey',
   },
 });
 
