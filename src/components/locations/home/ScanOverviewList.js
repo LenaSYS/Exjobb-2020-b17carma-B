@@ -4,6 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {ListItem} from 'react-native-elements';
 import {SectionList, StyleSheet, Text, View} from 'react-native';
 import {useFocusEffect} from '@react-navigation/core';
+import ContainedOverlineText from '../../util/ContainedOverlineText';
 
 const styles = StyleSheet.create({
   header: {
@@ -111,6 +112,11 @@ export default function ScanOverviewList(props) {
       keyExtractor={(item, index) => item + index}
       renderItem={({item}) => <Item component={item} />}
       stickySectionHeadersEnabled
+      ListHeaderComponent={
+        props.type === 0 ? (
+          <ContainedOverlineText text="Weekly Overview" />
+        ) : null
+      }
       renderSectionHeader={({section: {date}}) => <HeaderItem date={date} />}
     />
   );

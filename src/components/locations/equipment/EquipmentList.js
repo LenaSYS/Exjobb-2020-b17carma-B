@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     color: 'grey',
   },
+  card: {
+    margin: 8,
+  },
 });
 
 export default function EquipmentList(props) {
@@ -67,7 +70,10 @@ export default function EquipmentList(props) {
           },
         )
       }>
-      <Card key={i} image={TranslatedImage(equip.image)}>
+      <Card
+        containerStyle={styles.card}
+        key={i}
+        image={TranslatedImage(equip.image)}>
         <Text style={styles.title}>{equip.identifier}</Text>
         <Text style={styles.body}>{equip._id}</Text>
       </Card>
