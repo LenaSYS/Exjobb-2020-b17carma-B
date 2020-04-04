@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     paddingTop: 7,
     paddingBottom: 7,
   },
+  cardContainer: {
+    margin: 8,
+  },
 });
 
 export default function ScanResultSteps(props) {
@@ -77,7 +80,7 @@ export default function ScanResultSteps(props) {
   }
 
   return (
-    <Card>
+    <Card containerStyle={styles.cardContainer}>
       <Accordion
         sections={steps}
         touchableComponent={TouchableOpacity}
