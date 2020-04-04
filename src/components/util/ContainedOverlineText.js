@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: 1,
     marginTop: 10,
-    marginLeft: 14,
+    marginLeft: 16,
     marginBottom: 6,
   },
 });
