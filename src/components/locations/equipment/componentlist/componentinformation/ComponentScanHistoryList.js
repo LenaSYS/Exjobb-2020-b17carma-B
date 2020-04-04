@@ -5,6 +5,7 @@ import {View} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useFocusEffect} from '@react-navigation/core';
+import {material} from 'react-native-typography';
 
 const ComponentScanHistoryList = props => {
   const [scans, setScans] = React.useState([]);
@@ -68,6 +69,7 @@ const ComponentScanHistoryList = props => {
           key={i}
           leftIcon={ListIcon(scan.status)}
           title={moment(scan.time).format('DD/MM/YYYY HH:mm:ss')}
+          titleStyle={material.body1}
         />
       ))}
     </View>

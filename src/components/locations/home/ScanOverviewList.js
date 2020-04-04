@@ -5,6 +5,7 @@ import {ListItem} from 'react-native-elements';
 import {SectionList, StyleSheet, Text, View} from 'react-native';
 import {useFocusEffect} from '@react-navigation/core';
 import ContainedOverlineText from '../../util/ContainedOverlineText';
+import { material } from 'react-native-typography'
 
 const styles = StyleSheet.create({
   header: {
@@ -78,6 +79,7 @@ export default function ScanOverviewList(props) {
     return (
       <ListItem
         title={component.identifier}
+        titleStyle={material.body1}
         subtitle={component.equipment.identifier}
         leftIcon={<ListIcon component={component} />}
         onPress={() =>
