@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   captionText: {
     ...material.caption,
     fontSize: 14,
+    marginTop: 4,
   },
 });
 
