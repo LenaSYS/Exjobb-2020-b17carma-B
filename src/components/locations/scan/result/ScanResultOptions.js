@@ -5,13 +5,11 @@ import {useNavigation} from '@react-navigation/core';
 
 const styles = StyleSheet.create({
   button: {
-    flex: 1,
-    margin: 5,
+    marginLeft: 5,
   },
   buttonContainer: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
   },
 });
 
@@ -31,7 +29,7 @@ export default function ScanResultOptions(props) {
         status: status,
       }),
     }).then(() => {
-      navigation.replace('Scan');
+      navigation.popToTop();
       navigation.navigate('Equipment Item', {
         equipmentId: props.component.equipment._id,
       });

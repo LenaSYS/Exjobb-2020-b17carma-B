@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 export default function ComponentActions(props) {
   return (
     <ListItem
-      onPress={() => props.navigation.navigate('Scan')}
+      onPress={() => props.navigation.navigate('ScanTab')}
       leftIcon={
         <MaterialCommunityIcons name="scanner" color="#9E9E9E" size={26} />
       }

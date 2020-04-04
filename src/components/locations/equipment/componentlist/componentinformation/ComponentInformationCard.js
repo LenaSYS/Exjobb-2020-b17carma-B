@@ -2,16 +2,17 @@ import React from 'react';
 import {Card} from 'react-native-elements';
 import TranslatedImage from '../../../../util/TranslatedImage';
 import {StyleSheet, Text} from 'react-native';
+import {material} from 'react-native-typography';
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 22,
+    ...material.headline,
     marginBottom: 10,
   },
-  body: {
-    fontWeight: '400',
+  caption: {
+    ...material.caption,
+    fontSize: 14,
     marginBottom: 8,
-    color: 'grey',
   },
   cardContainer: {
     margin: 0,
@@ -29,7 +30,7 @@ export default function ComponentInformationCard(props) {
       <Text style={styles.title}>
         {props.component.equipment.identifier} - {props.component.identifier}
       </Text>
-      <Text style={styles.body}>{props.component.description}</Text>
+      <Text style={styles.caption}>{props.component.description}</Text>
     </Card>
   );
 }

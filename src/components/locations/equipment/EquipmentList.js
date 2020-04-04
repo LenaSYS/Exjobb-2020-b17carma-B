@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     ...material.headline,
     marginBottom: 10,
   },
-  body: {
+  caption: {
     ...material.caption,
     fontSize: 14,
     marginBottom: 8,
@@ -76,7 +76,7 @@ export default function EquipmentList(props) {
         key={i}
         image={TranslatedImage(equip.image)}>
         <Text style={styles.title}>{equip.identifier}</Text>
-        <Text style={styles.body}>{equip._id}</Text>
+        <Text style={styles.caption}>{equip._id}</Text>
       </Card>
     </TouchableOpacity>
   ));
