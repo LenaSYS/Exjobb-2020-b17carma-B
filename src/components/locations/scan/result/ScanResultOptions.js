@@ -14,6 +14,15 @@ const styles = StyleSheet.create({
   cardContainer: {
     margin: 8,
   },
+  secondaryButton: {
+    color: '#f50057',
+  },
+  cancelButton: {
+    color: '#000000',
+  },
+  questionText: {
+    marginBottom: 6,
+  },
 });
 
 export default function ScanResultOptions(props) {
@@ -41,7 +50,9 @@ export default function ScanResultOptions(props) {
 
   return (
     <Card containerStyle={styles.cardContainer}>
-      <Text>Is this component functioning properly?</Text>
+      <Text style={styles.questionText}>
+        Is this component functioning properly?
+      </Text>
       <View style={styles.buttonContainer}>
         <View style={styles.buttonView}>
           <Button
@@ -52,6 +63,7 @@ export default function ScanResultOptions(props) {
         </View>
         <View style={styles.buttonView}>
           <Button
+            buttonStyle={styles.secondaryButton}
             title="No"
             type="outline"
             onPress={() => sendResults(false)}
@@ -59,6 +71,7 @@ export default function ScanResultOptions(props) {
         </View>
         <View style={styles.buttonView}>
           <Button
+            buttonStyle={styles.cancelButton}
             title="Cancel"
             type="outline"
             onPress={() => navigation.goBack()}
