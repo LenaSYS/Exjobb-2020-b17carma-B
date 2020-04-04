@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     ...material.body1,
-    fontSize: 14,
+    fontSize: 15,
   },
   captionText: {
     ...material.caption,

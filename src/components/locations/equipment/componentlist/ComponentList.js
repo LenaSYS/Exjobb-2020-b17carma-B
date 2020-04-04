@@ -1,9 +1,17 @@
 import ComponentIcon from './ComponentIcon';
 import React, {useCallback} from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import ContainedOverlineText from '../../../util/ContainedOverlineText';
 import {ListItem} from 'react-native-elements';
 import {useFocusEffect} from '@react-navigation/core';
+import {material} from 'react-native-typography';
+
+const styles = StyleSheet.create({
+  titleText: {
+    ...material.body1,
+    fontSize: 15,
+  },
+});
 
 export default function ComponentList(props) {
   const [components, setComponents] = React.useState([]);
@@ -54,6 +62,7 @@ export default function ComponentList(props) {
             })
           }
           title={component.identifier}
+          titleStyle={styles.titleText}
         />
       ))}
     </View>
