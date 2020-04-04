@@ -3,16 +3,17 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Button, Card} from 'react-native-elements';
 import TranslatedImage from '../../util/TranslatedImage';
 import {useFocusEffect} from '@react-navigation/core';
+import {material} from 'react-native-typography';
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 22,
+    ...material.headline,
     marginBottom: 10,
   },
   body: {
-    fontWeight: '400',
+    ...material.caption,
+    fontSize: 14,
     marginBottom: 8,
-    color: 'grey',
   },
   card: {
     margin: 8,
