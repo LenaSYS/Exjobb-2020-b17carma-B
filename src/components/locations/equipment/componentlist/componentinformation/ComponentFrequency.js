@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Card} from 'react-native-elements';
+import {material} from 'react-native-typography';
 
 const styles = StyleSheet.create({
   root: {
@@ -61,13 +62,17 @@ export default function ComponentFrequency(props) {
   return (
     <View style={styles.root}>
       <Card style={styles.card} containerStyle={styles.cardContainer}>
-        <Text>{props.component.frequency} time(s)</Text>
+        <Text style={material.body1}>{props.component.frequency} time(s)</Text>
       </Card>
       <Card style={styles.card} containerStyle={styles.cardContainer}>
-        <Text>Each {translate(props.component.frequencyType)}</Text>
+        <Text style={material.body1}>
+          Each {translate(props.component.frequencyType)}
+        </Text>
       </Card>
       <Card style={styles.card} containerStyle={styles.cardContainer}>
-        <Text>{translateDays(props.component.frequencyDays)}</Text>
+        <Text style={material.body1}>
+          {translateDays(props.component.frequencyDays)}
+        </Text>
       </Card>
     </View>
   );
