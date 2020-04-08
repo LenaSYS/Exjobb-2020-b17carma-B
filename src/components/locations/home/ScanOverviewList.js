@@ -2,10 +2,12 @@ import React, {useCallback, useState} from 'react';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ListItem} from 'react-native-elements';
-import {SectionList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, SectionList, StyleSheet, Text, View} from 'react-native';
 import {useFocusEffect} from '@react-navigation/core';
 import ContainedOverlineText from '../../util/ContainedOverlineText';
 import {material} from 'react-native-typography';
+import NestedListView, {NestedRow} from 'react-native-nested-listview';
+import ComponentIcon from '../equipment/componentlist/ComponentIcon';
 
 const styles = StyleSheet.create({
   header: {
@@ -77,14 +79,25 @@ export default function ScanOverviewList(props) {
       return () => {
         unmounted = true;
       };
-    }, [props]),
+    }, [props.startDate, props.endDate]),
   );
 
   if (loading) {
     return <View />;
   }
 
-  function Item({component}) {
+  function SubItem({node}) {
+    return (
+      <View>
+        <ListItem title={node.equipment.identifier} />
+        {node.components.map((component, i) => (
+          <NavItem component={component}/>
+        ))}
+      </View>
+    );
+  }
+
+  function NavItem({component}) {
     return (
       <ListItem
         title={component.identifier}
@@ -122,14 +135,14 @@ export default function ScanOverviewList(props) {
     <SectionList
       sections={overview}
       keyExtractor={(item, index) => item + index}
-      renderItem={({item}) => <Item component={item} />}
+      renderItem={({item}) => <SubItem node={item} />}
       stickySectionHeadersEnabled
       ListHeaderComponent={
         props.type === 0 ? (
           <ContainedOverlineText text="Weekly Overview" />
         ) : null
       }
-      renderSectionHeader={({section: {date}}) => <HeaderItem date={date} />}
+      renderSectionHeader={({section}) => <HeaderItem date={section.title} />}
     />
   );
 }
