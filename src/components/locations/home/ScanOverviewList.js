@@ -2,12 +2,11 @@ import React, {useCallback, useState} from 'react';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ListItem} from 'react-native-elements';
-import {FlatList, SectionList, StyleSheet, Text, View} from 'react-native';
+import {SectionList, StyleSheet, Text, View} from 'react-native';
 import {useFocusEffect} from '@react-navigation/core';
 import ContainedOverlineText from '../../util/ContainedOverlineText';
 import {material} from 'react-native-typography';
-import NestedListView, {NestedRow} from 'react-native-nested-listview';
-import ComponentIcon from '../equipment/componentlist/ComponentIcon';
+import ScanOverviewListItem from './ScanOverviewListItem';
 
 const styles = StyleSheet.create({
   header: {
@@ -86,41 +85,6 @@ export default function ScanOverviewList(props) {
     return <View />;
   }
 
-  function SubItem({node}) {
-    return (
-      <View>
-        <ListItem title={node.equipment.identifier} />
-        {node.components.map((component, i) => (
-          <NavItem component={component}/>
-        ))}
-      </View>
-    );
-  }
-
-  function NavItem({component}) {
-    return (
-      <ListItem
-        title={component.identifier}
-        titleStyle={styles.titleText}
-        subtitle={component.equipment.identifier}
-        subtitleStyle={styles.captionText}
-        leftIcon={<ListIcon component={component} />}
-        onPress={() =>
-          props.navigation.navigate(
-            props.type === 0 ? 'HomeTab' : 'AnalyticsTab',
-            {
-              screen: 'Component',
-              params: {
-                equipmentId: component.equipment._id,
-                componentId: component._id,
-              },
-            },
-          )
-        }
-      />
-    );
-  }
-
   function HeaderItem({date}) {
     return (
       <View style={styles.header}>
@@ -135,7 +99,9 @@ export default function ScanOverviewList(props) {
     <SectionList
       sections={overview}
       keyExtractor={(item, index) => item + index}
-      renderItem={({item}) => <SubItem node={item} />}
+      renderItem={({item}) => (
+        <ScanOverviewListItem node={item} navigation={props.navigation} />
+      )}
       stickySectionHeadersEnabled
       ListHeaderComponent={
         props.type === 0 ? (
