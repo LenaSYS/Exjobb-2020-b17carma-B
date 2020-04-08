@@ -23,10 +23,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 4,
   },
+  container: {
+    paddingLeft: 32,
+  },
 });
 
 export default function ScanOverviewListSubItems(props) {
-
   const ListIcon = props => {
     if (!props.component.hasOwnProperty('scanStatus')) {
       return <MaterialCommunityIcons name="cancel" color="#9E9E9E" size={26} />;
@@ -41,6 +43,7 @@ export default function ScanOverviewListSubItems(props) {
 
   return components.map((component, i) => (
     <ListItem
+      containerStyle={styles.container}
       title={component.identifier}
       titleStyle={styles.titleText}
       subtitleStyle={styles.captionText}
