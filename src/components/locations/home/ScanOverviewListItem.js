@@ -20,8 +20,16 @@ export default function ScanOverviewListItem(props) {
   const components = props.node.components;
 
   const ListIcon = function() {
-    if (equipment.progress === 0) {
-      return <MaterialCommunityIcons name="alert-circle-outline" size={22} />;
+    console.log(equipment);
+
+    if (!equipment.hasOwnProperty('progress') || equipment.progress === 0) {
+      return (
+        <MaterialCommunityIcons
+          name="alert-circle-outline"
+          color="grey"
+          size={22}
+        />
+      );
     } else if (equipment.progress === 100) {
       return <MaterialCommunityIcons name="check" color="#4CAF50" size={22} />;
     } else {
@@ -49,6 +57,7 @@ export default function ScanOverviewListItem(props) {
       />
       <Collapsible collapsed={open}>
         <ScanOverviewListSubItems
+          navigation={props.navigation}
           components={components}
           location={props.location}
         />

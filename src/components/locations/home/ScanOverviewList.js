@@ -33,16 +33,6 @@ export default function ScanOverviewList(props) {
   const [overview, setOverview] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const ListIcon = props => {
-    if (!props.component.hasOwnProperty('scanStatus')) {
-      return <MaterialCommunityIcons name="cancel" color="#9E9E9E" size={26} />;
-    } else if (props.component.scanStatus) {
-      return <MaterialCommunityIcons name="check" color="#4CAF50" size={26} />;
-    } else {
-      return <MaterialCommunityIcons name="alert" color="#f44336" size={26} />;
-    }
-  };
-
   useFocusEffect(
     useCallback(() => {
       let unmounted = false;
@@ -100,7 +90,11 @@ export default function ScanOverviewList(props) {
       sections={overview}
       keyExtractor={(item, index) => item + index}
       renderItem={({item}) => (
-        <ScanOverviewListItem node={item} navigation={props.navigation} />
+        <ScanOverviewListItem
+          node={item}
+          navigation={props.navigation}
+          location={props.location}
+        />
       )}
       stickySectionHeadersEnabled
       ListHeaderComponent={

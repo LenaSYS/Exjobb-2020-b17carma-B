@@ -43,6 +43,7 @@ export default function ScanOverviewListSubItems(props) {
 
   return components.map((component, i) => (
     <ListItem
+      key={i}
       containerStyle={styles.container}
       title={component.identifier}
       titleStyle={styles.titleText}
@@ -50,7 +51,7 @@ export default function ScanOverviewListSubItems(props) {
       leftIcon={<ListIcon component={component} />}
       onPress={() =>
         props.navigation.navigate(
-          props.type === 0 ? 'HomeTab' : 'AnalyticsTab',
+          props.location === 0 ? 'HomeTab' : 'AnalyticsTab',
           {
             screen: 'Component',
             params: {

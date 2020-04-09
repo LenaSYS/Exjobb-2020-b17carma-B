@@ -39,7 +39,12 @@ export default function HistoryView({navigation}) {
         handleStartDateChange={handleStartDateChange}
         handleEndDateChange={handleEndDateChange}
       />
-      <ScanOverviewList navigation={navigation} startDate={startDate} endDate={endDate} type={1}/>
+      <ScanOverviewList
+        navigation={navigation}
+        startDate={startDate}
+        endDate={endDate}
+        location={1}
+      />
     </SafeAreaView>
   );
 }

@@ -24,6 +24,7 @@
     "react-native-collapsible": "^1.5.2",
     "react-native-datepicker": "^1.7.2",
     "react-native-elements": "^1.2.7",
+    "react-native-fs": "^2.16.6",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-paper": "^3.8.0",
     "react-native-permissions": "^2.0.9",

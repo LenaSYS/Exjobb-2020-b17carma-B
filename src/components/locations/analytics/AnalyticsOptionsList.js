@@ -51,6 +51,16 @@ export default function AnalyticsOptionsList(props) {
         }
         onPress={() => props.navigation.navigate('History')}
       />
+      <ContainedOverlineText text="Debug" />
+      <ListItem
+        key="scanSimulation"
+        title="Scan Simulation"
+        titleStyle={styles.titleText}
+        leftIcon={
+          <MaterialCommunityIcons name="timer" color="#9E9E9E" size={26} />
+        }
+        onPress={() => props.navigation.navigate('Simulation')}
+      />
     </SafeAreaView>
   );
 }

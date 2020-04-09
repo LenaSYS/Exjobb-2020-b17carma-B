@@ -11,6 +11,7 @@ export default function HomeView({navigation}) {
       <ScanOverviewList
         startDate={moment().startOf('isoWeek')}
         endDate={moment().endOf('isoWeek')}
+        navigation={navigation}
         location={0}
       />
     </SafeAreaView>
