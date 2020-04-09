@@ -1,5 +1,6 @@
 import React from 'react';
 import now from 'performance-now';
+import {Linking} from 'react-native';
 import {
   Button,
   SafeAreaView,
@@ -32,13 +33,9 @@ export default function SimulationView() {
   const path = RNFS.DocumentDirectoryPath + '/results_native.txt';
 
   function saveResults() {
-    RNFS.writeFile(path, areaText, 'utf8')
-      .then(() => {
-        console.log('Results saved');
-      })
-      .catch(err => {
-        console.log(err.message);
-      });
+    Linking.openURL(
+      `mailto:b17carma@student.his.se?subject=ReactNativeResults&body=${areaText}`,
+    );
   }
 
   async function simulatePosts(equipmentId, componentId, status) {
@@ -48,7 +45,7 @@ export default function SimulationView() {
     let lastTime = 0;
     let newText = '';
 
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 100; i++) {
       const response = await fetch('https://api.carlmaier.se/scan', {
         method: 'POST',
         headers: {
@@ -97,8 +94,11 @@ export default function SimulationView() {
           title="Start Simulation"
         />
       </View>
-      <TextInput multiline label="Results" value={areaText} />
-      <Button variant="contained" onPress={() => saveResults()} title="Save results" />
+      <Button
+        variant="contained"
+        onPress={() => saveResults()}
+        title="Save results"
+      />
     </SafeAreaView>
   );
 }
