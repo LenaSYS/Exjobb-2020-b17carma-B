@@ -30,7 +30,6 @@ export default function SimulationView() {
   const [start, setStart] = React.useState(0);
   const [areaText, setAreaText] = React.useState('');
   const [end, setEnd] = React.useState(0);
-  const path = RNFS.DocumentDirectoryPath + '/results_native.txt';
 
   function saveResults() {
     Linking.openURL(
