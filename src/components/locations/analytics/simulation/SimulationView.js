@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import {Card} from 'react-native-elements';
 import {material} from 'react-native-typography';
-import * as RNFS from 'react-native-fs';
 
 const styles = StyleSheet.create({
   paper: {
@@ -44,7 +43,7 @@ export default function SimulationView() {
     let lastTime = 0;
     let newText = '';
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       const response = await fetch('https://api.carlmaier.se/scan', {
         method: 'POST',
         headers: {
