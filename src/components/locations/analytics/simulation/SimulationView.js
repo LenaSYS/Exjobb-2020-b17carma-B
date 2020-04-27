@@ -43,7 +43,7 @@ export default function SimulationView() {
     let lastTime = 0;
     let newText = '';
 
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 10000; i++) {
       const response = await fetch('https://api.carlmaier.se/scan', {
         method: 'POST',
         headers: {
