@@ -6,12 +6,11 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from 'react-native';
 import {Card} from 'react-native-elements';
 import {material} from 'react-native-typography';
-import Configuration from "../../../../Configuration";
+import Configuration from '../../../../Configuration';
 
 const styles = StyleSheet.create({
   paper: {
@@ -44,7 +43,7 @@ export default function SimulationView() {
     let lastTime = 0;
     let newText = '';
 
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 1000; i++) {
       const response = await fetch(Configuration.API_LOCATION + '/scan', {
         method: 'POST',
         headers: {
