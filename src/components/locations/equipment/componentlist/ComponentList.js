@@ -5,6 +5,7 @@ import ContainedOverlineText from '../../../util/ContainedOverlineText';
 import {ListItem} from 'react-native-elements';
 import {useFocusEffect} from '@react-navigation/core';
 import {material} from 'react-native-typography';
+import Configuration from '../../../../Configuration';
 
 const styles = StyleSheet.create({
   titleText: {
@@ -23,7 +24,7 @@ export default function ComponentList(props) {
 
       async function fetchComponentList() {
         const res = await fetch(
-          'https://api.carlmaier.se' + '/components/' + props.equipmentId,
+          Configuration.API_LOCATION + '/components/' + props.equipmentId,
         );
         const components = await res.json();
 

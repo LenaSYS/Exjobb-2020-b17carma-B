@@ -4,6 +4,7 @@ import ScanResultOptions from './ScanResultOptions';
 import ComponentInformationCard from '../../equipment/componentlist/componentinformation/ComponentInformationCard';
 import {ScrollView, View} from 'react-native';
 import {useFocusEffect} from '@react-navigation/core';
+import Configuration from '../../../../Configuration';
 
 export default function ScanResultView({route, navigation}) {
   const [component, setComponent] = React.useState({});
@@ -15,7 +16,7 @@ export default function ScanResultView({route, navigation}) {
 
       async function fetchComponentData() {
         const res = await fetch(
-          'https://api.carlmaier.se' +
+          Configuration.API_LOCATION +
             '/components/' +
             route.params.equipmentId +
             '/' +

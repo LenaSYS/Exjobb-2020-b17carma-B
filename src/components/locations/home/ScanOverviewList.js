@@ -7,6 +7,7 @@ import {useFocusEffect} from '@react-navigation/core';
 import ContainedOverlineText from '../../util/ContainedOverlineText';
 import {material} from 'react-native-typography';
 import ScanOverviewListItem from './ScanOverviewListItem';
+import Configuration from '../../../Configuration';
 
 const styles = StyleSheet.create({
   header: {
@@ -42,7 +43,7 @@ export default function ScanOverviewList(props) {
 
       async function fetchOverviewData() {
         const res = await fetch(
-          'https://api.carlmaier.se' +
+          Configuration.API_LOCATION +
             '/analytics/overview/' +
             startDate.format() +
             '/' +

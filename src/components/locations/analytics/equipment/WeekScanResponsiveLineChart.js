@@ -4,6 +4,7 @@ import moment from 'moment';
 import {Dimensions, View} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
 import {useFocusEffect} from '@react-navigation/core';
+import Configuration from '../../../../Configuration';
 
 export default function WeekScanResponsiveLineChart(props) {
   const [chartData, setChartData] = React.useState({});
@@ -15,7 +16,7 @@ export default function WeekScanResponsiveLineChart(props) {
 
       async function fetchChartData() {
         const res = await fetch(
-          'https://api.carlmaier.se' +
+          Configuration.API_LOCATION +
             '/analytics/scans/' +
             props.equipmentId +
             '/' +

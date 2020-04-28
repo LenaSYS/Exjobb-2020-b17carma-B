@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {Button, Card} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/core';
+import Configuration from '../../../../Configuration';
 
 const styles = StyleSheet.create({
   buttonView: {
@@ -29,7 +30,7 @@ export default function ScanResultOptions(props) {
   const navigation = useNavigation();
 
   function sendResults(status) {
-    fetch('https://api.carlmaier.se' + '/scan', {
+    fetch(Configuration.API_LOCATION + '/scan', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

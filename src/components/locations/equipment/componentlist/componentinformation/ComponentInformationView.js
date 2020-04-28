@@ -6,6 +6,7 @@ import ComponentActions from './ComponentActions';
 import ContainedOverlineText from '../../../../util/ContainedOverlineText';
 import {ScrollView, View} from 'react-native';
 import {useFocusEffect} from '@react-navigation/core';
+import Configuration from '../../../../../Configuration';
 
 export default function ComponentInformationView({route, navigation}) {
   const [component, setComponent] = React.useState([]);
@@ -17,7 +18,7 @@ export default function ComponentInformationView({route, navigation}) {
 
       async function fetchComponentData() {
         const res = await fetch(
-          'https://api.carlmaier.se' +
+          Configuration.API_LOCATION +
             '/components/' +
             route.params.equipmentId +
             '/' +

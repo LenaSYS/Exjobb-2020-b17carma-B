@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {Card} from 'react-native-elements';
 import {material} from 'react-native-typography';
+import Configuration from "../../../../Configuration";
 
 const styles = StyleSheet.create({
   paper: {
@@ -44,7 +45,7 @@ export default function SimulationView() {
     let newText = '';
 
     for (let i = 0; i < 10000; i++) {
-      const response = await fetch('https://api.carlmaier.se/scan', {
+      const response = await fetch(Configuration.API_LOCATION + '/scan', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

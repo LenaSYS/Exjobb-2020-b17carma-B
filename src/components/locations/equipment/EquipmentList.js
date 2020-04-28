@@ -4,6 +4,7 @@ import {Button, Card} from 'react-native-elements';
 import TranslatedImage from '../../util/TranslatedImage';
 import {useFocusEffect} from '@react-navigation/core';
 import {material} from 'react-native-typography';
+import Configuration from '../../../Configuration';
 
 const styles = StyleSheet.create({
   title: {
@@ -29,7 +30,7 @@ export default function EquipmentList(props) {
       let unmounted = false;
 
       async function fetchEquipmentData() {
-        const res = await fetch('https://api.carlmaier.se' + '/equipment');
+        const res = await fetch(Configuration.API_LOCATION + '/equipment');
 
         res
           .json()

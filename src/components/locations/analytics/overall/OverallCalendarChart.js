@@ -3,6 +3,7 @@ import {ScrollView, View} from 'react-native';
 import {ContributionGraph} from 'react-native-chart-kit';
 import moment from 'moment';
 import {useFocusEffect} from '@react-navigation/core';
+import Configuration from '../../../../Configuration';
 
 export default function OverallCalendarChart() {
   const [calendar, setCalendar] = React.useState([]);
@@ -14,7 +15,7 @@ export default function OverallCalendarChart() {
 
       async function fetchCalendarData() {
         const res = await fetch(
-          'https://api.carlmaier.se' + '/analytics/calendar',
+          Configuration.API_LOCATION + '/analytics/calendar',
         );
         const data = await res.text();
         const formattedData = data

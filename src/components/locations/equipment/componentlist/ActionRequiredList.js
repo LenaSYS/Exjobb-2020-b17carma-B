@@ -5,6 +5,7 @@ import {ListItem} from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useFocusEffect} from '@react-navigation/core';
 import {material} from 'react-native-typography';
+import Configuration from '../../../../Configuration';
 
 const styles = StyleSheet.create({
   titleText: {
@@ -23,7 +24,7 @@ export default function ActionRequiredList(props) {
 
       async function fetchRequiredComponents() {
         const res = await fetch(
-          'https://api.carlmaier.se' + '/scan/required/' + props.equipmentId,
+          Configuration.API_LOCATION + '/scan/required/' + props.equipmentId,
         );
         const components = await res.json();
 

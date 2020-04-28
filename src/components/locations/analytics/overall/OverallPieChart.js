@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import {Dimensions, View} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
 import {useFocusEffect} from '@react-navigation/core';
+import Configuration from '../../../../Configuration';
 
 export default function OverallPieChart() {
   const [overallData, setOverallData] = React.useState([]);
@@ -13,7 +14,7 @@ export default function OverallPieChart() {
 
       async function fetchStatData() {
         const res = await fetch(
-          'https://api.carlmaier.se' + '/analytics/stats',
+          Configuration.API_LOCATION + '/analytics/stats',
         );
         const data = await res.json();
 

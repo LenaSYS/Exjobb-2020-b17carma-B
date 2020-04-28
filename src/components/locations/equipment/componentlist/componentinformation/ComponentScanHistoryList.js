@@ -6,6 +6,7 @@ import {ListItem} from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useFocusEffect} from '@react-navigation/core';
 import {material} from 'react-native-typography';
+import Configuration from '../../../../../Configuration';
 
 const ComponentScanHistoryList = props => {
   const [scans, setScans] = React.useState([]);
@@ -18,7 +19,7 @@ const ComponentScanHistoryList = props => {
 
       async function fetchScanData() {
         const res = await fetch(
-          'https://api.carlmaier.se' +
+          Configuration.API_LOCATION +
             '/scan/' +
             props.equipmentId +
             '/' +

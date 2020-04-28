@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Card} from 'react-native-elements';
 import TranslatedImage from '../../../util/TranslatedImage';
 import {useFocusEffect} from '@react-navigation/core';
+import Configuration from '../../../../Configuration';
 
 const styles = StyleSheet.create({
   title: {
@@ -31,7 +32,7 @@ export default function EquipmentInfoCard(props) {
 
       async function fetchEquipmentInfo() {
         const res = await fetch(
-          'https://api.carlmaier.se' + '/equipment/' + props.equipmentId,
+          Configuration.API_LOCATION + '/equipment/' + props.equipmentId,
         );
         const data = await res.json();
 

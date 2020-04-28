@@ -3,6 +3,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Card, Divider} from 'react-native-elements';
 import Accordion from 'react-native-collapsible/Accordion';
 import {useFocusEffect} from '@react-navigation/core';
+import Configuration from '../../../../Configuration';
 
 const styles = StyleSheet.create({
   headerStyle: {
@@ -25,8 +26,8 @@ export default function ScanResultSteps(props) {
 
       async function fetchStepData() {
         const res = await fetch(
-          'https://api.carlmaier.se' +
-            '/components/' +
+          Configuration.API_LOCATION +
+            +'/components/' +
             props.component.equipment._id +
             '/' +
             props.component._id +
