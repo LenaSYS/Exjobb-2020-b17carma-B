@@ -1,13 +1,7 @@
 import React from 'react';
 import now from 'performance-now';
 import {Linking} from 'react-native';
-import {
-  Button,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Button, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {Card} from 'react-native-elements';
 import {material} from 'react-native-typography';
 import Configuration from '../../../../Configuration';
