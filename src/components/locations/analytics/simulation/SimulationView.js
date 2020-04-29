@@ -43,7 +43,7 @@ export default function SimulationView() {
     let lastTime = 0;
     let newText = '';
 
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 5000; i++) {
       const response = await fetch(Configuration.API_LOCATION + '/scan', {
         method: 'POST',
         headers: {
