@@ -34,10 +34,11 @@ export default function SimulationView() {
     setEnd(0);
     setStart(now());
 
-    let lastTime = 0;
     let newText = '';
 
     for (let i = 0; i < 5000; i++) {
+      let startTime = now();
+
       const response = await fetch(Configuration.API_LOCATION + '/scan', {
         method: 'POST',
         headers: {
@@ -54,11 +55,8 @@ export default function SimulationView() {
 
       let timeNow = now();
 
-      if (lastTime !== 0) {
-        newText += timeNow - lastTime + '\n';
-      }
+        newText += timeNow - startTime + '\n';
 
-      lastTime = timeNow;
     }
     setAreaText(newText);
     setEnd(now());
