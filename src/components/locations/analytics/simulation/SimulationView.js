@@ -54,8 +54,7 @@ export default function SimulationView() {
       await response.json();
 
       let timeNow = now();
-
-        newText += timeNow - startTime + '\n';
+      newText += timeNow - startTime + '\n';
 
     }
     setAreaText(newText);
