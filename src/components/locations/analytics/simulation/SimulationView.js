@@ -36,7 +36,7 @@ export default function SimulationView() {
 
     let newText = '';
 
-    for (let i = 0; i < 5000; i++) {
+    for (let i = 0; i < 10000; i++) {
       let startTime = now();
 
       const response = await fetch(Configuration.API_LOCATION + '/scan', {
@@ -55,7 +55,6 @@ export default function SimulationView() {
 
       let timeNow = now();
       newText += timeNow - startTime + '\n';
-
     }
     setAreaText(newText);
     setEnd(now());
